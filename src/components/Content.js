@@ -19,10 +19,9 @@ if (activeMenu === "Dashboard") {
     <Box> 
     <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Dashboard</Typography>
 
-  <Grid container spacing={3}  sx={{pr: 5 // padding right 
-  }} >
+  <Grid container spacing={3}  sx={{pr: 5}} >
 
-    <Grid item xs={12} sm={12} md={3}>
+      <Grid item xs={12} sm={6} md={6} lg={3}>
       <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928' }}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
             Total NFTs
@@ -55,7 +54,7 @@ if (activeMenu === "Dashboard") {
         </Card>
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={12} sm={6} md={6} lg={3}>
       <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928' }}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
           Total Value
@@ -89,7 +88,7 @@ if (activeMenu === "Dashboard") {
         </Card>
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={12} sm={6} md={6} lg={3}>
       <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928' }}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
           Total ETH Value
@@ -122,7 +121,7 @@ if (activeMenu === "Dashboard") {
         </Card>
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={12} sm={6} md={6} lg={3}>
       <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928'}}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
           Liquid ETH
@@ -155,7 +154,7 @@ if (activeMenu === "Dashboard") {
         </Card>
       </Grid>
 
-    </Grid>
+   </Grid>
     </Box> 
   );
 }
