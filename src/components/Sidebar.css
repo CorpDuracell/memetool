@@ -1,0 +1,9 @@
+.sidebar, .parentContainer {
+  background-color: red;
+}
+
+@media (min-width: 769px) {
+  .your-toggle-button-class {
+      display: none;
+  }
+}
