@@ -1,6 +1,6 @@
 // Content.js
 
-import './Content.css';
+import styles from '../styles/Content.module.css';
 import React from 'react';
 import { Grid, Card, Typography, Box, } from '@mui/material';
 
@@ -16,7 +16,7 @@ const { open, activeMenu} = useDrawer();
 
 if (activeMenu === "Dashboard") {
   content = (
-    <Box> 
+    <Box className={styles.content}> 
     <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Dashboard</Typography>
 
   <Grid container spacing={3}  sx={{pr: 5}} >
@@ -177,7 +177,7 @@ if (activeMenu === "About") {
 }
 
     return (
-      <Box className="contentArea" sx={{ marginLeft: open ? '270px' : '0px'  }}>
+      <Box className={styles.contentArea} sx={{ marginLeft: open ? '270px' : '0px'  }}>
         {content} 
       </Box>
     );   

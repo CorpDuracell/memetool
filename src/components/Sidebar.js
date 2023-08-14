@@ -1,20 +1,21 @@
 // Sidebar.js
-import './Sidebar.css';
+import styles from '../styles/Sidebar.module.css';
 
 import { GiPirateSkull } from 'react-icons/gi';
 import { GiPirateCoat } from 'react-icons/gi';
 import { GiBarrel } from 'react-icons/gi';
-import logo from '../assets/Black_and_White_Skull_memetool_Animated_Logo.gif';
 
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemText, Typography } from '@mui/material';
 import { useDrawer } from './DrawerContext';
+
+const logo = "/Black_and_White_Skull_memetool_Animated_Logo.gif";
 
 export default function Sidebar() {
   const { open, setActiveMenu } = useDrawer();
 
 
   return (
-    <Drawer variant="persistent" anchor="left" open={open}>
+    <Drawer className={styles.sidebar} variant="persistent" anchor="left" open={open}>
       <Box 
         sx={{ 
           display: 'flex', 

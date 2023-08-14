@@ -1,0 +1,7 @@
+.app {
+  display: flex;
+  color: rgba(255, 255, 255, 0.87);
+  height: 100vh;
+  flex-direction: column;
+  background-color: #1E1F1F;
+}

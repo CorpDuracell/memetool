@@ -7,9 +7,14 @@ export const useDrawer = () => {
 };
 
 export const DrawerProvider = ({ children }) => {
-    // Set initial state based on window width
-    const [open, setOpen] = useState(window.innerWidth > 768);
+    // Initialize state with undefined so it doesn't try to access window on the server
+    const [open, setOpen] = useState(undefined);
     const [activeMenu, setActiveMenu] = useState("Dashboard"); // Default to "Dashboard"
+
+    useEffect(() => {
+        // Now that we're on the client, we can safely access window
+        setOpen(window.innerWidth > 768);
+    }, []); // Empty dependency array means this useEffect runs once when component mounts
 
     const toggleDrawer = () => {
         setOpen(prevOpen => !prevOpen);

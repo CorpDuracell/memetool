@@ -1,4 +1,4 @@
-import './Header.css';
+import styles from '../styles/Header.module.css';
 
 import * as React from 'react';
 import AppBar from '@mui/material/AppBar';
@@ -41,7 +41,7 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" className="appBar" sx={{ backgroundColor: '#1E1F1F', borderBottom: '1px solid #282928', marginLeft: open ? '270px' : '0px',
+    <AppBar position="static" className={styles.appBar} sx={{ backgroundColor: '#1E1F1F', borderBottom: '1px solid #282928', marginLeft: open ? '270px' : '0px',
     width: open ? `calc(100% - 270px)` : '100%',}}>
         <Toolbar disableGutters sx={{display: 'flex', justifyContent: 'space-between'}}>
         <IconButton
