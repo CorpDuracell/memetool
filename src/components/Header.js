@@ -14,7 +14,8 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import { useDrawer } from './DrawerContext';
 
-
+// Import the Web3Button
+import { Web3Button } from '@web3modal/react';
 
 const pages = ['About', 'Pricing', 'Blog'];
 const settings = ['Account', 'Logout'];
@@ -108,7 +109,9 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-            <Button color="inherit" sx={{ ml: 2 }}>Connect Wallet</Button>
+            <Box sx={{ ml: 2, display: 'flex', alignItems: 'center'}}>
+              <Web3Button />
+            </Box>
           </Box>
           </Box>
         </Toolbar>

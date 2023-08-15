@@ -7,6 +7,8 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
     "@mui/material": "^5.14.4",
+    "@web3modal/ethereum": "^2.7.1",
+    "@web3modal/react": "^2.7.1",
     "chart.js": "^4.3.0",
     "chartjs-adapter-date-fns": "^3.0.0",
     "next": "^13.4.13",
@@ -14,12 +16,14 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "viem": "^1.6.0",
+    "wagmi": "^1.3.10",
     "web3": "^4.0.3"
   },
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "start next dev & open-cli http://localhost:3000"
+    "dev": "next dev & open http://localhost:3000"
   },
   "devDependencies": {
     "open-cli": "^7.2.0"
