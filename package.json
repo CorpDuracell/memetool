@@ -23,9 +23,10 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next dev & open http://localhost:3000"
+    "dev": "concurrently \"next dev\" \"open-cli http://localhost:3000\""
   },
   "devDependencies": {
+    "concurrently": "^8.2.0",
     "open-cli": "^7.2.0"
   }
 }

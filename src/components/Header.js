@@ -12,9 +12,10 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import { useDrawer } from './DrawerContext';
+import Hidden from '@mui/material/Hidden';
+import MenuIcon from '@mui/icons-material/Menu';
 
-// Import the Web3Button
+import { useDrawer } from './DrawerContext';
 import { Web3Button } from '@web3modal/react';
 
 const pages = ['About', 'Pricing', 'Blog'];
@@ -42,53 +43,79 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar position="static" className={styles.appBar} sx={{ backgroundColor: '#1E1F1F', borderBottom: '1px solid #282928', marginLeft: open ? '270px' : '0px',
-    width: open ? `calc(100% - 270px)` : '100%',}}>
-        <Toolbar disableGutters sx={{display: 'flex', justifyContent: 'space-between'}}>
+    <AppBar position="static" className={styles.appBar} sx={{ backgroundColor: '#1E1F1F', borderBottom: '1px solid #282928', marginLeft: open ? '270px' : '0px', width: open ? `calc(100% - 270px)` : '100%', }}>
+      <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
         <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={toggleDrawer}
-            edge="start"
+          color="inherit"
+          aria-label="open drawer"
+          onClick={toggleDrawer}
+          edge="start"
         >
-        <MenuOpenIcon />
+          <MenuOpenIcon />
         </IconButton>
-        <Box sx={{display: 'flex', justifyContent: 'flex-end'}}>
-          <Box sx={{  display: {xs: 'flex', md: 'flex'} }}>
-          {pages.map((page) => (
-  page === "Blog" ? (
-    <a href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-      <Button
-        key={page}
-        onClick={handleCloseNavMenu}
-        sx={{ my: 2, color: 'white', display: 'block' }}
-      >
-        {page}
-      </Button>
-    </a>
-  ) : (
-    <Button
-      key={page}
-      onClick={() => {
-        handleCloseNavMenu();
-        setActiveMenu(page);  // <-- Set the active menu here
-      }}
-      sx={{ my: 2, color: 'white', display: 'block' }}
-    >
-      {page}
-    </Button>
-  )
-))}
-          </Box>
-
-          <Box sx={{ display: {xs: 'flex', md: 'flex'}, ml: 5}}>
+        <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
+          <Hidden mdUp>
+            <IconButton color="inherit" onClick={handleOpenNavMenu}>
+              <MenuIcon />
+            </IconButton>
+            <Menu
+              anchorEl={anchorElNav}
+              open={Boolean(anchorElNav)}
+              onClose={handleCloseNavMenu}
+            >
+    {pages.map((page) => (
+      page === "Blog" ? (
+        <a href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+          <MenuItem key={page} onClick={handleCloseNavMenu}>
+            {page}
+          </MenuItem>
+        </a>
+      ) : (
+        <MenuItem key={page} onClick={() => {
+          handleCloseNavMenu();
+          setActiveMenu(page);
+        }}>
+          {page}
+        </MenuItem>
+      )
+    ))}
+  </Menu>
+</Hidden>
+          <Hidden mdDown>
+            {pages.map((page) => (
+              page === "Blog" ? (
+                <a href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <Button
+                    key={page}
+                    onClick={handleCloseNavMenu}
+                    sx={{ my: 2, color: 'white', display: 'block' }}
+                  >
+                    {page}
+                  </Button>
+                </a>
+              ) : (
+                <Button
+                  key={page}
+                  onClick={() => {
+                    handleCloseNavMenu();
+                    setActiveMenu(page);
+                  }}
+                  sx={{ my: 2, color: 'white', display: 'block' }}
+                >
+                  {page}
+                </Button>
+              )
+            ))}
+          </Hidden>
+          {/* ... rest of your code */}
+          <Box sx={{ display: { xs: 'flex', md: 'flex' }, ml: 5 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                 <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
               </IconButton>
             </Tooltip>
             <Menu
-              sx={{ mt: '45px'}}
+              sx={{ mt: '45px' }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -109,12 +136,12 @@ function ResponsiveAppBar() {
                 </MenuItem>
               ))}
             </Menu>
-            <Box sx={{ ml: 2, display: 'flex', alignItems: 'center'}}>
+            <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
               <Web3Button />
             </Box>
           </Box>
-          </Box>
-        </Toolbar>
+        </Box>
+      </Toolbar>
     </AppBar>
   );
 }
