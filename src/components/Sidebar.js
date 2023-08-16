@@ -31,7 +31,7 @@ export default function Sidebar() {
           button 
           onClick={() => setActiveMenu("Dashboard")}
         >
-          <ListItemIcon className={activeMenu === "Dashboard" ? styles.activeMenu : ""} sx={{ fontSize: '1.5rem', minWidth: '35px' }} >
+          <ListItemIcon sx={{ fontSize: '1.5rem', minWidth: '35px' }} >
             <GiPirateSkull />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
