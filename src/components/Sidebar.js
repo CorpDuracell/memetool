@@ -27,30 +27,29 @@ export default function Sidebar() {
       </Box>
       <Typography variant="h6" sx={{ mt: 2, mb: 2, ml: 2, color: '#666666' }}>Navigation</Typography>
       <List sx={{ color: '#666666'}}>
-        <ListItem sx={{}}
+        <ListItem className={activeMenu === "Dashboard" ? styles.activeMenu : ""}
           button 
           onClick={() => setActiveMenu("Dashboard")}
-          className={activeMenu === "Dashboard" ? styles.activeMenu : ""}
         >
           <ListItemIcon className={activeMenu === "Dashboard" ? styles.activeMenu : ""} sx={{ fontSize: '1.5rem', minWidth: '35px' }} >
             <GiPirateSkull />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem 
+        <ListItem className={activeMenu === "Collection" ? styles.activeMenu : ""}
           button 
           onClick={() => setActiveMenu("Collection")}
-          className={activeMenu === "Collection" ? styles.activeMenu : ""}
+
         >
           <ListItemIcon className={activeMenu === "Collection" ? styles.activeMenu : ""} sx={{ fontSize: '1.5rem', minWidth: '35px' }}>
             <GiPirateCoat />
           </ListItemIcon>
           <ListItemText primary="Collection" />
         </ListItem>
-        <ListItem 
+        <ListItem className={activeMenu === "Pirate Chat" ? styles.activeMenu : ""}
           button 
           onClick={() => setActiveMenu("Pirate Chat")}
-          className={activeMenu === "Pirate Chat" ? styles.activeMenu : ""}
+
         >
           <ListItemIcon className={activeMenu === "Pirate Chat" ? styles.activeMenu : ""} sx={{ fontSize: '1.5rem', minWidth: '35px' }}>
             <GiBarrel />
