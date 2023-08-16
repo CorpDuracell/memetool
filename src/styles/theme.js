@@ -30,11 +30,7 @@ const theme = createTheme({
         MuiListItemIcon: {
             styleOverrides: {
                 root: {
-                    color: '#666666', // default color
-                    "&.activeMenu": {
-                        color: '#E2E3E3', // color for active state
-                    },
-                    
+                    color: '#666666', // default color                    
                 },
             },
         },

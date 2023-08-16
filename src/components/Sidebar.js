@@ -26,8 +26,8 @@ export default function Sidebar() {
         <img src={logo} alt="Your Logo" style={{ width: '80%', height: 'auto' }} />
       </Box>
       <Typography variant="h6" sx={{ mt: 2, mb: 2, ml: 2, color: '#666666' }}>Navigation</Typography>
-      <List sx={{ color: '#666666' }}>
-        <ListItem 
+      <List sx={{ color: '#666666'}}>
+        <ListItem sx={{}}
           button 
           onClick={() => setActiveMenu("Dashboard")}
           className={activeMenu === "Dashboard" ? styles.activeMenu : ""}
@@ -35,7 +35,7 @@ export default function Sidebar() {
           <ListItemIcon className={activeMenu === "Dashboard" ? styles.activeMenu : ""} sx={{ fontSize: '1.5rem', minWidth: '35px' }} >
             <GiPirateSkull />
           </ListItemIcon>
-          <ListItemText className={activeMenu === "Dashboard" ? styles.activeMenu : ""} primary="Dashboard" />
+          <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem 
           button 
