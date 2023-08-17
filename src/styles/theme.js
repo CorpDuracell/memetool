@@ -44,13 +44,6 @@ const theme = createTheme({
             },
         },
     },
-
-    // Add global styles
-    styles: {
-        '.app': {
-            // hier Anpassungen vornehmen oder in der App.css
-        }
-    }
 });
 
 export default theme;

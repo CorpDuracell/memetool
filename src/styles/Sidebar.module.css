@@ -2,6 +2,8 @@
   background-color: #282829;
   color: #E2E3E3 ;
 }
-/*.activeMenu:hover {
+
+ListItemButton .Mui-selected {
   background-color: #282829;
-} */
+  color: #E2E3E3 ;
+}
