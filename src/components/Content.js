@@ -9,13 +9,21 @@ import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import { useDrawer } from '../contexts/DrawerContext';
 
 import { useWallet } from '../contexts/WalletContext';
+import ETHPriceDisplay from './ETHPriceDisplay';
+
 
 export default function Content({setActiveMenu }) {
+
+
 
 let content;
 const { open, activeMenu} = useDrawer();
 
 const accountWallet = useWallet();
+
+
+// Debugging on console
+console.log(accountWallet);
 
 
 if (activeMenu === "Dashboard") {
@@ -159,7 +167,10 @@ if (activeMenu === "Dashboard") {
       </Grid>
 
    </Grid>
-   <p>Connected Wallet Address: {accountWallet}</p>
+   <div>
+      {accountWallet ? `Connected: ${accountWallet}` : 'Not Connected'}
+      <ETHPriceDisplay />
+    </div>
     </Box> 
   );
 }
@@ -185,6 +196,7 @@ if (activeMenu === "About") {
       <Box className={styles.contentArea} sx={{ marginLeft: open ? '270px' : '0px'  }}>
         {content} 
       </Box>
+
     );   
     } 
   

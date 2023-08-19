@@ -5,7 +5,10 @@ import App from '../src/components/App';
 import { ThemeProvider } from '@mui/material/styles';
 import theme from '../src/styles/theme';
 
+// Get current Address from connected Wallet
 import { WalletProvider } from '../src/contexts/WalletContext';
+// Get current ETH price from Coingecko
+import { ETHPriceProvider } from '../src/contexts/ETHPriceContext';
 
 // WalletConnect and Web3Modal imports
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
@@ -35,10 +38,12 @@ function MyApp({ Component, pageProps }) {
     <ThemeProvider theme={theme}>
       <WagmiConfig config={wagmiConfig}>
       <WalletProvider>
+      <ETHPriceProvider>
         <App>
           <Component {...pageProps} />
         </App>
         <Web3Modal projectId={projectId} ethereumClient={ethereumClient} themeMode="dark"/>
+        </ETHPriceProvider>
         </WalletProvider>
       </WagmiConfig>
     </ThemeProvider>
