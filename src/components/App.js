@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 //import ChartComponent from './ChartComponent';
 
 // Import components 
-import { DrawerProvider } from './DrawerContext';
+import { DrawerProvider } from '../contexts/DrawerContext';
 import Header from './Header';
 import Sidebar from './Sidebar';
 import Content from './Content';

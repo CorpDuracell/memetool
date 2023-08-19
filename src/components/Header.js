@@ -12,8 +12,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Hidden from '@mui/material/Hidden';
 import MenuIcon from '@mui/icons-material/Menu';
 
-import { useDrawer } from './DrawerContext';
+import { useDrawer } from '../contexts/DrawerContext';
+
 import { Web3Button } from '@web3modal/react';
+
 
 const pages = ['About', 'Pricing', 'Blog'];
 
@@ -96,7 +98,7 @@ function ResponsiveAppBar() {
             ))}
           </Hidden>
             <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
-              <Web3Button />
+              <Web3Button  />
             </Box>
         </Box>
       </Toolbar>

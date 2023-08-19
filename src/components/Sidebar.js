@@ -6,7 +6,7 @@ import { GiPirateCoat } from 'react-icons/gi';
 import { GiBarrel } from 'react-icons/gi';
 
 import { Box, Drawer, List, ListItem, ListItemIcon, ListItemButton, ListItemText, Typography } from '@mui/material';
-import { useDrawer } from './DrawerContext';
+import { useDrawer } from '../contexts/DrawerContext';
 
 const logo = "/Black_and_White_Skull_memetool_Animated_Logo.gif";
 

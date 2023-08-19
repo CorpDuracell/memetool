@@ -6,12 +6,16 @@ import { Grid, Card, Typography, Box, } from '@mui/material';
 
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
-import { useDrawer } from './DrawerContext';
+import { useDrawer } from '../contexts/DrawerContext';
+
+import { useWallet } from '../contexts/WalletContext';
 
 export default function Content({setActiveMenu }) {
 
 let content;
 const { open, activeMenu} = useDrawer();
+
+const accountWallet = useWallet();
 
 
 if (activeMenu === "Dashboard") {
@@ -155,6 +159,7 @@ if (activeMenu === "Dashboard") {
       </Grid>
 
    </Grid>
+   <p>Connected Wallet Address: {accountWallet}</p>
     </Box> 
   );
 }
