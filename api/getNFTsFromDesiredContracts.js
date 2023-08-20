@@ -17,10 +17,7 @@ export default async (req, res) => {
 
     try {
         // Get all NFTs for the specified owner
-        const data = await alchemy.nft.getNftsForOwner(owner, {
-            contractAddresses: NFT_CONTRACTS,
-            withMetadata: true
-        });
+        const data = await alchemy.nft.getNftsForOwner(owner);
         
         if (data && data.ownedNfts && data.ownedNfts.length > 0) {
             const nfts = data.ownedNfts.map(nft => ({
