@@ -18,22 +18,20 @@ export default async (req, res) => {
     try {
         // Get all NFTs for the specified owner
         const data = await alchemy.nft.getNftsForOwner(owner);
-
-        console.log("Raw NFT data from Alchemy:", data); // Log the raw data
         
         if (data && data.ownedNfts && data.ownedNfts.length > 0) {
             const nfts = data.ownedNfts.map(nft => {
-                if (!nft.id || !nft.id.tokenId || !nft.metadata) {
+                if (!nft.tokenId || !nft.rawMetadata) {
                     console.log("Problematic NFT:", nft);
                     return null;
                 }
 
                 return {
-                    tokenId: nft.id.tokenId,
-                    name: nft.metadata.name,
-                    description: nft.metadata.description,
-                    image: nft.metadata.image,
-                    attributes: nft.metadata.attributes,
+                    tokenId: nft.tokenId,
+                    name: nft.rawMetadata.name,
+                    description: nft.rawMetadata.description,
+                    image: nft.rawMetadata.image,
+                    attributes: nft.rawMetadata.attributes,
                 };
             }).filter(Boolean);
 
