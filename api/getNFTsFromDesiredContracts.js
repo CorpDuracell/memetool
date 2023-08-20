@@ -11,7 +11,7 @@ export default async (req, res) => {
 
     // Initialize the Alchemy SDK
     const alchemy = new Alchemy({
-        apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",
+        apiKey: process.env.ALCHEMY_API_KEY,
         network: Network.ETH_MAINNET
     });
 

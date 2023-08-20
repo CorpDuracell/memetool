@@ -1,0 +1,5 @@
+{
+    "env": {
+      "ALCHEMY_API_KEY": "@alchemy-api-key"
+    }
+  }
