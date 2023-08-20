@@ -11,7 +11,7 @@ export default async (req, res) => {
 
     // Initialize the Alchemy SDK
     const alchemy = new Alchemy({
-        apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",
+        apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",  // Accessing the API key from environment variables
         network: Network.ETH_MAINNET
     });
 
@@ -28,7 +28,7 @@ export default async (req, res) => {
               attributes: nft.metadata.attributes,
             }));
 
-            res.status(200).json(data.nfts);
+            res.status(200).json(nfts);  // Sending the mapped nfts
         } else {
             res.status(404).json({ error: 'No NFTs found for this owner from the desired contracts.' });
         }
