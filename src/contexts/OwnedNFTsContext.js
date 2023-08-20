@@ -1,3 +1,4 @@
+// OwnedNFTsContext.js
 import React, { createContext, useState, useEffect, useContext } from 'react';
 import { useWallet } from './WalletContext';
 
@@ -9,7 +10,7 @@ export const OwnedNFTsProvider = ({ children }) => {
     const [error, setError] = useState(null);
 
     const walletContext = useWallet();
-    const walletAddress = walletContext ? walletContext.address : null;
+    const walletAddress = walletContext;
 
     useEffect(() => {
         if (walletAddress) {
