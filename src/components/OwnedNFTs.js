@@ -1,30 +1,11 @@
-// src/components/OwnedNFTs.js
-
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useContext } from 'react';
+import { OwnedNFTsContext } from '../contexts/OwnedNFTsContext';
 import { useWallet } from '../contexts/WalletContext';
 
 function OwnedNFTs() {
-    const [nfts, setNfts] = useState([]);
-    const [isLoading, setIsLoading] = useState(true);
-    const [error, setError] = useState(null);
-    
+    const { nfts, isLoading, error } = useContext(OwnedNFTsContext);
     const walletContext = useWallet();
     const walletAddress = walletContext ? walletContext.address : null;
-
-    useEffect(() => {
-        if (walletAddress) {
-            fetch(`/api/getNFTsFromDesiredContracts?owner=${walletAddress}`)
-                .then(response => response.json())
-                .then(data => {
-                    setNfts(data);
-                    setIsLoading(false);
-                })
-                .catch(err => {
-                    setError(err);
-                    setIsLoading(false);
-                });
-        }
-    }, [walletAddress]);
 
     if (!walletAddress) return <div>Please connect your wallet.</div>;
     if (isLoading) return <div>Loading...</div>;
@@ -32,7 +13,7 @@ function OwnedNFTs() {
 
     return (
         <div>
-            <h2>Your NFTs from Specified Collections</h2>
+            <h2>Your NFTs from all Memeland Collections</h2>
             {nfts.map(nft => (
                 <div key={nft.tokenId}>
                     <img src={nft.tokenUri} alt={nft.name} />

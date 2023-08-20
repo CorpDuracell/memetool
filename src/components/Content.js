@@ -10,11 +10,7 @@ import { useDrawer } from '../contexts/DrawerContext';
 
 import { useWallet } from '../contexts/WalletContext';
 import ETHPriceDisplay from './ETHPriceDisplay';
-import ShowAllNFTsFromOwner from './ShowAllNFTsFromOwner';
-
-import OwnedNFTs from './OwnedMemelandNFTs';
-
-import { useAlchemy } from '../contexts/AlchemyContext';
+import OwnedNFTs from './OwnedNFTs';
 
 export default function Content() {
 

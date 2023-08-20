@@ -4,6 +4,11 @@ import { NFT_CONTRACTS } from "../config/nftContracts";
 export default async (req, res) => {
     const { owner } = req.query;
 
+    // Check if the owner parameter is provided
+    if (!owner || owner.trim() === "") {
+        return res.status(400).json({ error: 'Please provide a Wallet Address.' });
+    }
+
     // Initialize the Alchemy SDK
     const alchemy = new Alchemy({
         apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",

@@ -10,6 +10,8 @@ import theme from '../src/styles/theme';
 import { WalletProvider } from '../src/contexts/WalletContext';
 // Get current ETH price from Coingecko
 import { ETHPriceProvider } from '../src/contexts/ETHPriceContext';
+// Get currently owned Memeland NFTs from connected Wallet
+import { OwnedNFTsProvider } from '../src/contexts/OwnedNFTsContext';
 
 // WalletConnect and Web3Modal imports
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
@@ -41,10 +43,12 @@ function MyApp({ Component, pageProps }) {
       <WalletProvider>
       <ETHPriceProvider>
       <AlchemyProvider>
+      <OwnedNFTsProvider>
         <App>
         <Component {...pageProps}/>
         </App>
         <Web3Modal projectId={projectId} ethereumClient={ethereumClient} themeMode="dark"/>
+        </OwnedNFTsProvider>
         </AlchemyProvider>
         </ETHPriceProvider>
         </WalletProvider>
