@@ -1,26 +1,29 @@
-// /api/getNFTsFromDesiredContracts.js
-import fetch from 'node-fetch';
+import { Network, Alchemy } from "alchemy-sdk";
 import { NFT_CONTRACTS } from "../config/nftContracts";
 
 export default async (req, res) => {
-  const API_KEY = "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV";
-  const BASE_URL = `https://eth-mainnet.g.alchemy.com/nft/v2/${API_KEY}/getNFTs`;
-  
-  const { owner } = req.query;
-  
-  try {
-    const contractAddresses = NFT_CONTRACTS.join(",");
-    const response = await fetch(`${BASE_URL}?owner=${owner}&contractAddresses[]=${contractAddresses}&withMetadata=true`);
-    const data = await response.json();
-    
-    if (data && data.nfts) {
-      res.status(200).json(data.nfts);
-    } else {
-      res.status(404).json({ error: 'No NFTs found for this owner from the desired contracts.' });
-    }
+    const { owner } = req.query;
 
-  } catch (error) {
-    console.error("Error fetching data from Alchemy:", error);
-    return res.status(500).json({ error: 'Failed to fetch NFT data.' });
-  }
+    // Initialize the Alchemy SDK
+    const alchemy = new Alchemy({
+        apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",
+        network: Network.ETH_MAINNET
+    });
+
+    try {
+        // Get all NFTs for the specified owner
+        const data = await alchemy.nft.getNftsForOwner(owner, {
+            contractAddresses: NFT_CONTRACTS,
+            withMetadata: true
+        });
+
+        if (data && data.nfts && data.nfts.length > 0) {
+            res.status(200).json(data.nfts);
+        } else {
+            res.status(404).json({ error: 'No NFTs found for this owner from the desired contracts.' });
+        }
+    } catch (error) {
+        console.error("Error fetching data from Alchemy:", error);
+        return res.status(500).json({ error: 'Failed to fetch NFT data.' });
+    }
 };
