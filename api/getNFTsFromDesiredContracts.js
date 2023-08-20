@@ -11,7 +11,7 @@ export default async (req, res) => {
 
     // Initialize the Alchemy SDK
     const alchemy = new Alchemy({
-        apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",  // Accessing the API key from environment variables
+        apiKey: "blQyoZI9DR9e0ksuLiTGGf3kGv19V-fV",
         network: Network.ETH_MAINNET
     });
 
@@ -20,15 +20,22 @@ export default async (req, res) => {
         const data = await alchemy.nft.getNftsForOwner(owner);
         
         if (data && data.ownedNfts && data.ownedNfts.length > 0) {
-            const nfts = data.ownedNfts.map(nft => ({
-              tokenId: nft.id.tokenId,
-              name: nft.metadata.name,
-              description: nft.metadata.description,
-              image: nft.metadata.image,
-              attributes: nft.metadata.attributes,
-            }));
+            const nfts = data.ownedNfts.map(nft => {
+                if (!nft.id || !nft.id.tokenId || !nft.metadata) {
+                    console.log("Problematic NFT:", nft);  // Log the problematic NFT
+                    return null;  // Return null for this NFT and filter it out later
+                }
 
-            res.status(200).json(nfts);  // Sending the mapped nfts
+                return {
+                    tokenId: nft.id.tokenId,
+                    name: nft.metadata.name,
+                    description: nft.metadata.description,
+                    image: nft.metadata.image,
+                    attributes: nft.metadata.attributes,
+                };
+            }).filter(Boolean);  // Filter out any null values
+
+            res.status(200).json(nfts);
         } else {
             res.status(404).json({ error: 'No NFTs found for this owner from the desired contracts.' });
         }
