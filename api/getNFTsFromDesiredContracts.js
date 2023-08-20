@@ -21,8 +21,16 @@ export default async (req, res) => {
             contractAddresses: NFT_CONTRACTS,
             withMetadata: true
         });
+        
+        if (data && data.ownedNfts && data.ownedNfts.length > 0) {
+            const nfts = data.ownedNfts.map(nft => ({
+              tokenId: nft.id.tokenId,
+              name: nft.metadata.name,
+              description: nft.metadata.description,
+              image: nft.metadata.image,
+              attributes: nft.metadata.attributes,
+            }));
 
-        if (data && data.nfts && data.nfts.length > 0) {
             res.status(200).json(data.nfts);
         } else {
             res.status(404).json({ error: 'No NFTs found for this owner from the desired contracts.' });
