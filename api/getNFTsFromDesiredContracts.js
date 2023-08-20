@@ -1,4 +1,5 @@
 import { Network, Alchemy } from "alchemy-sdk";
+import { NFT_CONTRACTS } from "../config/nftContracts";
 
 export default async (req, res) => {
     const { owner } = req.query;
@@ -15,8 +16,8 @@ export default async (req, res) => {
     });
 
     try {
-        // Get all NFTs for the specified owner
-        const data = await alchemy.nft.getNftsForOwner(owner);
+        // Get all NFTs for the specified owner and contracts
+        const data = await alchemy.nft.getNftsForOwner(owner, { contractAddresses: NFT_CONTRACTS });
         
         if (data && data.ownedNfts && data.ownedNfts.length > 0) {
             const nfts = data.ownedNfts.map(nft => {
