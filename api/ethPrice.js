@@ -6,6 +6,9 @@ let cachedData;
 let cacheTime;
 
 module.exports = async (req, res) => {
+  // Set CORS headers only for local development
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Methods', 'GET');
   // Check if we have cached data and it's less than 30 seconds old
   if (cacheTime && Date.now() - cacheTime < 30000) {
     return res.json(cachedData);

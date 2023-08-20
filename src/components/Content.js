@@ -22,10 +22,6 @@ const { open, activeMenu} = useDrawer();
 const accountWallet = useWallet();
 
 
-// Debugging on console
-console.log(accountWallet);
-
-
 if (activeMenu === "Dashboard") {
   content = (
     <Box className={styles.content}> 
