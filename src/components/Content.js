@@ -1,7 +1,7 @@
 // Content.js
-
 import styles from '../styles/Content.module.css';
 import React from 'react';
+import { useEffect } from 'react';
 import { Grid, Card, Typography, Box, } from '@mui/material';
 
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
@@ -10,11 +10,13 @@ import { useDrawer } from '../contexts/DrawerContext';
 
 import { useWallet } from '../contexts/WalletContext';
 import ETHPriceDisplay from './ETHPriceDisplay';
+import ShowAllNFTsFromOwner from './ShowAllNFTsFromOwner';
 
+import OwnedNFTs from './OwnedMemelandNFTs';
 
-export default function Content({setActiveMenu }) {
+import { useAlchemy } from '../contexts/AlchemyContext';
 
-
+export default function Content() {
 
 let content;
 const { open, activeMenu} = useDrawer();
@@ -172,8 +174,12 @@ if (activeMenu === "Dashboard") {
 }
 
 if (activeMenu === "Collection") {
-  content =     <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Collection</Typography> ; 
-  
+  content = (
+    <>
+      <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Collection</Typography>
+      <OwnedNFTs />
+    </>
+  );
 }
 
 if (activeMenu === "Pirate Chat") {

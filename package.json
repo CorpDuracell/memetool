@@ -9,6 +9,7 @@
     "@mui/material": "^5.14.4",
     "@web3modal/ethereum": "^2.7.1",
     "@web3modal/react": "^2.7.1",
+    "alchemy-sdk": "^2.9.2",
     "chart.js": "^4.3.0",
     "chartjs-adapter-date-fns": "^3.0.0",
     "next": "^13.4.13",

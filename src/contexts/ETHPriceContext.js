@@ -16,7 +16,6 @@ export const ETHPriceProvider = ({ children }) => {
         const data = await response.json();
 
         if (data && data.ethereum && data.ethereum.usd) {
-          console.log("Setting ETH Price:", data.ethereum.usd);
           setETHPrice(data.ethereum.usd);
           return;
         }

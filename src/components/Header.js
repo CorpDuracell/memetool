@@ -16,7 +16,6 @@ import { useDrawer } from '../contexts/DrawerContext';
 
 import { Web3Button } from '@web3modal/react';
 
-
 const pages = ['About', 'Pricing', 'Blog'];
 
 function ResponsiveAppBar() {
@@ -55,8 +54,8 @@ function ResponsiveAppBar() {
             >
             {pages.map((page) => (
               page === "Blog" ? (
-                <a href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <a key={page} href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                  <MenuItem onClick={handleCloseNavMenu}>
                     {page}
                   </MenuItem>
                 </a>
@@ -74,9 +73,8 @@ function ResponsiveAppBar() {
           <Hidden mdDown>
             {pages.map((page) => (
               page === "Blog" ? (
-                <a href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
+                <a key={page} href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                   <Button
-                    key={page}
                     onClick={handleCloseNavMenu}
                     sx={{ my: 2, color: 'white', display: 'block' }}
                   >
