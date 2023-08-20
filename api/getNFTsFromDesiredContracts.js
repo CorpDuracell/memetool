@@ -29,13 +29,15 @@ export default async (req, res) => {
                 return {
                     tokenId: nft.tokenId,
                     name: nft.rawMetadata.name,
-                    description: nft.rawMetadata.description,
                     image: nft.rawMetadata.image,
                     attributes: nft.rawMetadata.attributes,
+                    totalSupply: nft.contract.totalSupply,
+                    tokenType: nft.tokenType,
+                    floorPrice: nft.contract.openSea.floorPrice,
                 };
             }).filter(Boolean);
 
-            res.status(200).json(nfts);
+            res.status(200).json({ nfts, totalCount: data.totalCount });
         } else {
             res.status(404).json({ error: 'No NFTs found for this owner from the desired contracts.' });
         }
