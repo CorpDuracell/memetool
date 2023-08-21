@@ -17,6 +17,7 @@ export const OwnedNFTsProvider = ({ children }) => {
             fetch(`https://memetool.vercel.app/api/getNFTsFromDesiredContracts?owner=${walletAddress}`)
                 .then(response => response.json())
                 .then(data => {
+                    console.log("API Response:", data);
                     setNfts(data);
                     setIsLoading(false);
                 })
