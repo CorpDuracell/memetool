@@ -172,7 +172,7 @@ if (activeMenu === "Dashboard") {
 if (activeMenu === "Collection") {
   content = (
     <>
-      <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Collection</Typography>
+      <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Your Memeland NFTs</Typography>
       <OwnedNFTs />
     </>
   );
