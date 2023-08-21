@@ -40,6 +40,7 @@ export default async (req, res) => {
                     totalSupply: nft.contract.totalSupply,
                     tokenType: nft.tokenType,
                     floorPrice: nft.contract.openSea.floorPrice,
+                    collectionName: nft.contract.openSea.collectionName,
                 };
             }).filter(Boolean);
 
