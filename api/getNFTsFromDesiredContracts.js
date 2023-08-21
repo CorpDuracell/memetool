@@ -30,6 +30,7 @@ export default async (req, res) => {
                     tokenId: nft.tokenId,
                     name: nft.rawMetadata.name,
                     image: nft.rawMetadata.image,
+                    thumbnail: nft.media && nft.media[0] && nft.media[0].thumbnail,
                     attributes: nft.rawMetadata.attributes,
                     totalSupply: nft.contract.totalSupply,
                     tokenType: nft.tokenType,

@@ -19,7 +19,7 @@ function OwnedNFTs() {
             <h2>Your NFTs from all Memeland Collections</h2>
             {nfts.map(nft => (
                 <div key={nft.tokenId}>
-                    <img src={nft.image} alt={nft.name} />
+                    <img src={nft.thumbnail} alt={nft.name} />
                     <p>Name: {nft.name}</p>
                     {/* Removed the description as per your request */}
                     <p>Token ID: {nft.tokenId}</p>
