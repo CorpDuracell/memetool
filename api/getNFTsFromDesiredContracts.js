@@ -4,6 +4,11 @@ import { NFT_CONTRACTS } from "../config/nftContracts";
 export default async (req, res) => {
     const { owner } = req.query;
 
+    // Set CORS headers for local dev env
+    res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');  
+    res.setHeader('Access-Control-Allow-Methods', 'GET'); 
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+
     // Check if the owner parameter is provided
     if (!owner || owner.trim() === "") {
         return res.status(400).json({ error: 'Please provide a Wallet Address.' });
