@@ -15,13 +15,24 @@ export const OwnedNFTsProvider = ({ children }) => {
     useEffect(() => {
         if (walletAddress) {
             fetch(`https://memetool.vercel.app/api/getNFTsFromDesiredContracts?owner=${walletAddress}`)
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     console.log("API Response:", data);
-                    setNfts(data);
+                    // Validate that the data contains an array of NFTs under the key 'nfts'
+                    if (data && Array.isArray(data.nfts)) {
+                        setNfts(data.nfts);
+                    } else {
+                        throw new Error('Unexpected data structure');
+                    }
                     setIsLoading(false);
                 })
                 .catch(err => {
+                    console.error(err);
                     setError(err);
                     setIsLoading(false);
                 });
@@ -34,3 +45,5 @@ export const OwnedNFTsProvider = ({ children }) => {
         </OwnedNFTsContext.Provider>
     );
 };
+
+export default OwnedNFTsProvider;
