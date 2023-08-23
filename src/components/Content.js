@@ -8,7 +8,6 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import { useDrawer } from '../contexts/DrawerContext';
 
-import { useWallet } from '../contexts/WalletContext';
 import ETHPriceDisplay from './ETHPriceDisplay';
 import OwnedNFTs from './OwnedNFTs';
 
@@ -16,8 +15,6 @@ export default function Content() {
 
 let content;
 const { open, activeMenu} = useDrawer();
-
-const accountWallet = useWallet();
 
 
 if (activeMenu === "Dashboard") {
@@ -162,7 +159,7 @@ if (activeMenu === "Dashboard") {
 
    </Grid>
    <div>
-      {accountWallet ? `Connected: ${accountWallet}` : 'Not Connected'}
+
       <ETHPriceDisplay />
     </div>
     </Box> 

@@ -9,8 +9,7 @@ export const OwnedNFTsProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    const walletContext = useWallet();
-    const walletAddress = walletContext;
+    const { walletAddress } = useWallet();
 
     useEffect(() => {
         if (walletAddress) {

@@ -1,3 +1,4 @@
+//OwnedNFTs.js
 import React, { useContext } from 'react';
 import { OwnedNFTsContext } from '../contexts/OwnedNFTsContext';
 import { useWallet } from '../contexts/WalletContext';
@@ -5,8 +6,7 @@ import { Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 
 function OwnedNFTs() {
     const { nfts, isLoading, error } = useContext(OwnedNFTsContext);
-    const walletContext = useWallet();
-    const walletAddress = walletContext;
+    const { walletAddress } = useWallet();
 
     if (!walletAddress) return <div>Please connect your wallet. </div>;
     if (isLoading) return <div>Loading...</div>;
@@ -22,7 +22,7 @@ function OwnedNFTs() {
             <Card>
                 <CardMedia
                     component="img"
-                    height="140"
+                    height="350"
                     image={nft.thumbnail}
                     alt={nft.name}
                 />
@@ -38,6 +38,7 @@ function OwnedNFTs() {
 
     return (
         <div>
+            <Typography variant="h6">Connected Wallet: {walletAddress}</Typography>
             {groupedNFTs["The MVPs"] && (
                 <div>
                     <h3>The MVPs</h3>
