@@ -4,6 +4,8 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Grid, Card, Typography, Box, } from '@mui/material';
 
+import ParticlesComponent from './ParticlesComponent';
+
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import { useDrawer } from '../contexts/DrawerContext';
@@ -176,7 +178,11 @@ if (activeMenu === "Collection") {
 }
 
 if (activeMenu === "Pirate Chat") {
-  content =     <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Pirate Chat</Typography> ; 
+  content = (
+    <>
+      <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Pirate Chat</Typography>
+    </> 
+  );
 }
 
 if (activeMenu === "Pricing") {

@@ -1,0 +1,15 @@
+/* /src/sytles/Page.module.css */
+/* ---- tsparticles container ---- */
+.Page {
+  position: relative; 
+  background-color: #000000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 98vh;
+}
+
+.particles {
+  position: absolute;
+  z-index: 0; /* Ensure particles stay behind other content */
+}

@@ -1,3 +1,4 @@
+// app/layout.js
 export const metadata = {
   title: 'Memetool.ai',
   description: 'Your one-stop destination for all things memeland',
