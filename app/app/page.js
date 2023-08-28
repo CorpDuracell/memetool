@@ -1,29 +1,29 @@
-// _app.js
+'use client'
+// app/app/page.js
 
 import React from 'react';
-import App from '../src/components/App';
-import Content from '../src/components/Content';
+import Dashboard from '../../src/components/Dashboard';
 import { ThemeProvider } from '@mui/material/styles';
-import theme from '../src/styles/theme';
+import theme from '../../src/styles/theme';
 
 // Get current Address from connected Wallet
-import { WalletProvider } from '../src/contexts/WalletContext';
+import { WalletProvider } from '../../src/contexts/WalletContext';
 // Get current ETH price from Coingecko
-import { ETHPriceProvider } from '../src/contexts/ETHPriceContext';
+import { ETHPriceProvider } from '../../src/contexts/ETHPriceContext';
 // Get currently owned Memeland NFTs from connected Wallet
-import { OwnedNFTsProvider } from '../src/contexts/OwnedNFTsContext';
+import { OwnedNFTsProvider } from '../../src/contexts/OwnedNFTsContext';
 
 // WalletConnect and Web3Modal imports
 import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
 import { Web3Modal } from '@web3modal/react';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
-import {mainnet} from 'wagmi/chains';
+import { mainnet } from 'wagmi/chains';
 
 // Alchemy SDK imports
-import { AlchemyProvider } from '../src/contexts/AlchemyContext';
+import { AlchemyProvider } from '../../src/contexts/AlchemyContext';
 
-import '../src/styles/_app.css';
-import '../src/styles/App.css';
+import '../../src/styles/_app.css';
+import '../../src/styles/App.css';
 
 // Configuration for WalletConnect
 const chains = [mainnet];
@@ -36,25 +36,24 @@ const wagmiConfig = createConfig({
 });
 const ethereumClient = new EthereumClient(wagmiConfig, chains);
 
-function MyApp({ Component, pageProps }) {
+export function App({ Component, pageProps }) {
   return (
     <ThemeProvider theme={theme}>
       <WagmiConfig config={wagmiConfig}>
-      <WalletProvider>
-      <ETHPriceProvider>
-      <AlchemyProvider>
-      <OwnedNFTsProvider>
-        <App>
-        <Component {...pageProps}/>
-        </App>
-        <Web3Modal projectId={projectId} ethereumClient={ethereumClient} themeMode="dark"/>
-        </OwnedNFTsProvider>
-        </AlchemyProvider>
-        </ETHPriceProvider>
+        <WalletProvider>
+          <ETHPriceProvider>
+            <AlchemyProvider>
+              <OwnedNFTsProvider>
+                <Dashboard>
+                  <Component {...pageProps} />
+                </Dashboard>
+                <Web3Modal projectId={projectId} ethereumClient={ethereumClient} themeMode="dark" />
+              </OwnedNFTsProvider>
+            </AlchemyProvider>
+          </ETHPriceProvider>
         </WalletProvider>
       </WagmiConfig>
     </ThemeProvider>
   );
 }
-
-export default MyApp;
+export default App;

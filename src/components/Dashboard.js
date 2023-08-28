@@ -1,3 +1,5 @@
+// /src/components/Dashboard.js 
+
 import React, { useState } from 'react';
 // import Button from '@mui/material/Button';
 //import ChartComponent from './ChartComponent';
@@ -10,7 +12,7 @@ import Content from './Content';
 
 
 
-function App() {
+function Dashboard() {
 
 const [activeMenu, setActiveMenu] = useState("Dashboard");
 
@@ -30,4 +32,4 @@ const [activeMenu, setActiveMenu] = useState("Dashboard");
   );
 }
 
-export default App;
+export default Dashboard;

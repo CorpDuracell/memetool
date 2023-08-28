@@ -1,4 +1,4 @@
-// Content.js
+// /src/components/Content.js
 import styles from '../styles/Content.module.css';
 import React from 'react';
 import { useEffect } from 'react';
