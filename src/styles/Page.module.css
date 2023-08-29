@@ -13,3 +13,7 @@
   position: absolute;
   z-index: 0; /* Ensure particles stay behind other content */
 }
+
+.noUnderline a {
+  text-decoration: none !important;
+}
