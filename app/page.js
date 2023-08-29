@@ -55,7 +55,7 @@ function Page() {
           variant="contained" 
           color="primary" 
           startIcon={<TwitterIcon sx={{ color: '#E2E3E3' }} />}
-          sx={{ color: '#E2E3E3' }}
+          sx={{ color: '#E2E3E3', textDecoration: 'none' }}
         >
           Follow Us
         </Button>
