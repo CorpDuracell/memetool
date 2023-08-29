@@ -50,7 +50,7 @@ function Page() {
     <img src={potatoz} alt="Building Potatoz" width="80" height="80" />
   </Box>
   <Box sx={{ mt: 2 ,color: '#E2E3E3' }}>
-    <Link href="https://twitter.com/memetoolai" passHref>
+    <Link href="https://twitter.com/memetoolai" passHref sx={{ textDecoration: 'none' }}>
         <Button 
           variant="contained" 
           color="primary" 
