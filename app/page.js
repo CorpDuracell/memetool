@@ -50,12 +50,12 @@ function Page() {
     <img src={potatoz} alt="Building Potatoz" width="80" height="80" />
   </Box>
   <Box sx={{ mt: 2 ,color: '#E2E3E3' }}>
-    <Link className="noUnderline" href="https://twitter.com/memetoolai" passHref sx={{ textDecoration: 'none' }}>
+    <Link className="noUnderline" href="https://twitter.com/memetoolai" passHref style={{ textDecoration: 'none' }}>
         <Button 
           variant="contained" 
           color="primary" 
           startIcon={<TwitterIcon sx={{ color: '#E2E3E3' }} />}
-          sx={{ color: '#E2E3E3', textDecoration: 'none' }}
+          sx={{ color: '#E2E3E3', textDecoration: 'none' }} style={{ textDecoration: 'none' }}
         >
           Follow Us
         </Button>
