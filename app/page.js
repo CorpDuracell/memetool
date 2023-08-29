@@ -39,12 +39,12 @@ function Page() {
     <img src={logo} alt="Your Logo" />
   </Box>
   <Typography variant="body1" letterSpacing={0} gutterBottom sx={{ color: '#E2E3E3', pr: '10px', textAlign: 'center' }}>
-  Crafting epicness for the MEMELAND legends!
+  Crafting Epicness for the <br/>MEMELAND Legends!
   </Typography>
   <Box sx={{ 
     position: 'absolute',   // Set position to absolute
     bottom: '-12px',            // Adjust as needed
-    right: '10px',          // Adjust as needed
+    right: '-5px',          // Adjust as needed
     // You can also use bottom and left properties if needed
   }}>
     <img src={potatoz} alt="Building Potatoz" width="80" height="80" />
