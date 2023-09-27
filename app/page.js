@@ -1,5 +1,7 @@
 'use client'
 // app/app/page.js
+import '../src/styles/_app.css';
+import '../src/styles/App.css';
 
 import React from 'react';
 import Dashboard from '../src/components/Dashboard';
@@ -14,29 +16,26 @@ import { ETHPriceProvider } from '../src/contexts/ETHPriceContext';
 import { OwnedNFTsProvider } from '../src/contexts/OwnedNFTsContext';
 
 // WalletConnect and Web3Modal imports
-import { EthereumClient, w3mConnectors, w3mProvider } from '@web3modal/ethereum';
-import { Web3Modal } from '@web3modal/react';
-import { configureChains, createConfig, WagmiConfig } from 'wagmi';
+import { createWeb3Modal, defaultWagmiConfig } from '@web3modal/wagmi/react';
+import { WagmiConfig } from 'wagmi';
 import { mainnet } from 'wagmi/chains';
 
 // Alchemy SDK imports
 import { AlchemyProvider } from '../src/contexts/AlchemyContext';
 
-import '../src/styles/_app.css';
-import '../src/styles/App.css';
-
 // Configuration for WalletConnect
-const chains = [mainnet];
 const projectId = '398501a83dfb5e2d04ae8a9a355a8587';
-const { publicClient } = configureChains(chains, [w3mProvider({ projectId })]);
-const wagmiConfig = createConfig({
-  autoConnect: true,
-  connectors: w3mConnectors({ projectId, chains }),
-  publicClient
-});
-const ethereumClient = new EthereumClient(wagmiConfig, chains);
+const metadata = {
+  name: 'Web3Modal',
+  description: 'Web3Modal Example',
+  url: 'https://web3modal.com',
+  icons: ['https://avatars.githubusercontent.com/u/37784886']
+};
+const chains = [mainnet];
+const wagmiConfig = defaultWagmiConfig({ chains, projectId, metadata });
+createWeb3Modal({ wagmiConfig, projectId, chains });
 
-export function App({ Component, pageProps }) {
+export default function Page() {
   return (
     <ThemeProvider theme={theme}>
       <WagmiConfig config={wagmiConfig}>
@@ -45,9 +44,7 @@ export function App({ Component, pageProps }) {
             <AlchemyProvider>
               <OwnedNFTsProvider>
                 <Dashboard>
-                  <Component {...pageProps} />
                 </Dashboard>
-                <Web3Modal projectId={projectId} ethereumClient={ethereumClient} themeMode="dark" />
               </OwnedNFTsProvider>
             </AlchemyProvider>
           </ETHPriceProvider>
@@ -56,4 +53,3 @@ export function App({ Component, pageProps }) {
     </ThemeProvider>
   );
 }
-export default App;

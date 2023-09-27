@@ -22,13 +22,14 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 
 import { useDrawer } from '../contexts/DrawerContext';
-import { Web3Button } from '@web3modal/react';
 import { useWallet } from '../contexts/WalletContext';
 import { useDisconnect } from 'wagmi';
+import ConnectButton from './ConnectButton';
+
 
 const pages = ['About', 'Pricing', 'Blog'];
 
-function ResponsiveAppBar() {
+export default function ResponsiveAppBar() {
     const { toggleDrawer, open, setActiveMenu } = useDrawer();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
@@ -150,7 +151,7 @@ function ResponsiveAppBar() {
                     </Hidden>
                     <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
                         <Button onClick={handleOpen} variant="outlined" sx={{ marginRight: 1 }}>Explore Wallet</Button>
-                        <Web3Button  />
+                        <ConnectButton />
                     </Box>
                     <Popover
             open={Boolean(anchorEl)}
@@ -237,5 +238,3 @@ function ResponsiveAppBar() {
         </AppBar>
     );
 }
-
-export default ResponsiveAppBar;

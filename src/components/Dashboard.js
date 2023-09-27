@@ -6,13 +6,13 @@ import React, { useState } from 'react';
 
 // Import components 
 import { DrawerProvider } from '../contexts/DrawerContext';
-import Header from './Header';
+import ResponsiveAppBar from './Header';
 import Sidebar from './Sidebar';
 import Content from './Content';
 
 
 
-function Dashboard() {
+export default function Dashboard() {
 
 const [activeMenu, setActiveMenu] = useState("Dashboard");
 
@@ -21,7 +21,7 @@ const [activeMenu, setActiveMenu] = useState("Dashboard");
 
     <div className="app">
 
-      <Header />
+      <ResponsiveAppBar />
 
       <Sidebar activeMenu={activeMenu} setActiveMenu={setActiveMenu} />   
 
@@ -31,5 +31,3 @@ const [activeMenu, setActiveMenu] = useState("Dashboard");
     </DrawerProvider>
   );
 }
-
-export default Dashboard;
