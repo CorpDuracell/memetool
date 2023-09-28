@@ -21,9 +21,6 @@ export const WalletProvider = ({ children }) => {
       setWalletAddress(null);
     }
   });
-
-  console.log("Account changed:", account ? account.address : 'No address');
-
   // Add the useEffect here to listen for changes to the walletAddress state
   useEffect(() => {
       console.log("Wallet address state changed:", walletAddress);
