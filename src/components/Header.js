@@ -33,7 +33,7 @@ export default function ResponsiveAppBar() {
     const { toggleDrawer, open, setActiveMenu } = useDrawer();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorEl, setAnchorEl] = React.useState(null);
-    const [walletAddress, setWalletAddress] = React.useState('0x1c593c369136264Abfb908b4B20e74c9a5949417');
+    const [walletAddress, setWalletAddress] = React.useState('0x1c593c...');
 
     const { walletAddress: walletAddressContext, setWalletAddress: setWalletAddressContext } = useWallet();
     const [localWalletAddress, setLocalWalletAddress] = useState(walletAddressContext); // Use the state from the context
