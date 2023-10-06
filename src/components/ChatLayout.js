@@ -27,10 +27,10 @@ const ChatLayout = () => {
           <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent' }} variant="outlined" onClick={() => handleExampleClick('Example 2')}>
             What is the Max supply of $MEME Coin
           </Button>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent' }} variant="outlined" onClick={() => handleExampleClick('Example 3')}>
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' } }} variant="outlined" onClick={() => handleExampleClick('Example 3')}>
             How much $MEME will be for the Community
           </Button>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent' }} variant="outlined" onClick={() => handleExampleClick('Example 4')}>
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' } }} variant="outlined" onClick={() => handleExampleClick('Example 4')}>
             How many NFT Collection does Memeland have
           </Button>
         </Box>
