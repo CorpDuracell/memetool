@@ -4,7 +4,6 @@ import React from 'react';
 import { useEffect } from 'react';
 import { Grid, Card, Typography, Box, } from '@mui/material';
 
-import ParticlesComponent from './ParticlesComponent';
 
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
@@ -14,6 +13,7 @@ import ETHPriceDisplay from './ETHPriceDisplay';
 import OwnedNFTs from './OwnedNFTs';
 
 import Chatbot from './Chatbase';
+import ChatLayout from './ChatLayout';
 
 export default function Content() {
 
@@ -26,10 +26,10 @@ if (activeMenu === "Dashboard") {
     <Box className={styles.content}> 
     <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Dashboard</Typography>
 
-  <Grid container spacing={3}  sx={{pr: 5}} >
+  <Grid container spacing={3} >
 
       <Grid item xs={12} sm={6} md={6} lg={3}>
-      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928' }}>
+      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', backgroundImage: 'none', p: 2, border: 1, borderColor: '#282928' }}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
             Total NFTs
           </Typography>
@@ -62,7 +62,7 @@ if (activeMenu === "Dashboard") {
       </Grid>
 
       <Grid item xs={12} sm={6} md={6} lg={3}>
-      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928' }}>
+      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', backgroundImage: 'none', p: 2, border: 1, borderColor: '#282928' }}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
           Total Value
           </Typography>
@@ -96,7 +96,7 @@ if (activeMenu === "Dashboard") {
       </Grid>
 
       <Grid item xs={12} sm={6} md={6} lg={3}>
-      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928' }}>
+      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', backgroundImage: 'none', p: 2, border: 1, borderColor: '#282928' }}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
           Total ETH Value
           </Typography>
@@ -129,7 +129,7 @@ if (activeMenu === "Dashboard") {
       </Grid>
 
       <Grid item xs={12} sm={6} md={6} lg={3}>
-      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', p: 2, border: 1, borderColor: '#282928'}}>
+      <Card sx={{ minHeight: 95, maxHeight: 95, minWidth: 140, maxWidth: 345, bgcolor: '#1f1e1f', backgroundImage: 'none', p: 2, border: 1, borderColor: '#282928'}}>
           <Typography variant="h6" letterSpacing={0} gutterBottom>
           Liquid ETH
           </Typography>
@@ -183,8 +183,8 @@ if (activeMenu === "Pirate Chat") {
   content = (
     <>
       <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Pirate Chat</Typography>
-      <div>     
-      <Chatbot />
+      <div>  
+      <ChatLayout />   
       </div>
     </> 
   );

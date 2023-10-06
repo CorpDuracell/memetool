@@ -1,6 +1,10 @@
 import { createTheme } from '@mui/material/styles';
 
 const theme = createTheme({
+
+    palette: {
+        mode: 'dark',
+    },
     typography: {
         fontFamily: [
             'Roboto', 'sans-serif'
@@ -43,6 +47,15 @@ const theme = createTheme({
                 },
             },
         },
+        MuiButton: {
+            styleOverrides: {
+              root: {
+                backgroundColor: '#1762BF',
+                backgroundImage: 'none',
+                color: 'white', // Ihre gewünschte Farbe
+              },
+            },
+          },
     },
 });
 

@@ -86,7 +86,7 @@ export default function ResponsiveAppBar() {
   
 
     return (
-        <AppBar position="static" className={styles.appBar} sx={{ backgroundColor: '#1E1F1F', borderBottom: '1px solid #282928', marginLeft: open ? '270px' : '0px', width: open ? `calc(100% - 270px)` : '100%', }}>
+        <AppBar position="static" className={styles.appBar} sx={{ backgroundColor: '#1E1F1F', backgroundImage: 'none', borderBottom: '1px solid #282928', marginLeft: open ? '270px' : '0px', width: open ? `calc(100% - 270px)` : '100%', }}>
             <Toolbar disableGutters sx={{ display: 'flex', justifyContent: 'space-between' }}>
                 <IconButton
                     color="inherit"
@@ -130,7 +130,7 @@ export default function ResponsiveAppBar() {
                 <a key={page} href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
                   <Button
                     onClick={handleCloseNavMenu}
-                    sx={{ my: 2, color: 'white', display: 'block' }}
+                    sx={{ my: 2, backgroundColor: '#1E1F1F', color: 'white', display: 'block' }}
                   >
                     {page}
                   </Button>
@@ -142,7 +142,7 @@ export default function ResponsiveAppBar() {
                     handleCloseNavMenu();
                     setActiveMenu(page);
                   }}
-                  sx={{ my: 2, color: 'white', display: 'block' }}
+                  sx={{ my: 2, backgroundColor: '#1E1F1F', color: 'white', display: 'block' }}
                 >
                   {page}
                 </Button>
