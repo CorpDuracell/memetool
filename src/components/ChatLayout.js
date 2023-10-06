@@ -15,11 +15,11 @@ const ChatLayout = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 150px)', bgcolor: 'background.default'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 150px)', bgcolor: 'background.default', overflow: 'hidden'}}>
       <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928'}}>
         {/* Hier können Sie die Chat-Nachrichten anzeigen */}
       </Box>
-      <Box sx={{ position: 'sticky', bottom: 0 }}>
+      <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden' }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 1, mb: 1, mt: 1, placeItems: 'center' }}>
           <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent' }} variant="outlined" onClick={() => handleExampleClick('Example 1')}>
             Ask where Ray is at the moment
