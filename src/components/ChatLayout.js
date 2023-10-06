@@ -21,17 +21,17 @@ const ChatLayout = () => {
       </Box>
       <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden' }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 1, mb: 1, mt: 1, placeItems: 'center' }}>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent' }} variant="outlined" onClick={() => handleExampleClick('Example 1')}>
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleExampleClick('Example 1')}>
             Ask where Ray is at the moment
           </Button>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent' }} variant="outlined" onClick={() => handleExampleClick('Example 2')}>
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleExampleClick('Example 2')}>
             What is the Max supply of $MEME Coin
           </Button>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' } }} variant="outlined" onClick={() => handleExampleClick('Example 3')}>
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleExampleClick('Example 3')}>
             How much $MEME will be for the Community
           </Button>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' } }} variant="outlined" onClick={() => handleExampleClick('Example 4')}>
-            How many NFT Collection does Memeland have
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleExampleClick('Example 4')}>
+            How many NFT Collections does Memeland have
           </Button>
         </Box>
         <Box sx={{ display: 'flex', gap: 1 }}>
