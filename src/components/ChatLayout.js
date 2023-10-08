@@ -25,13 +25,19 @@ const ChatLayout = () => {
       const data = await response.json();
   
       const memelandBot = data.chatbots.find(chatbot => chatbot.name === 'memelandBot');
+      console.log('memelandBot:', memelandBot); // Log the memelandBot object
+  
       if (memelandBot) {
         setChatbotIds([memelandBot.id]);
+        setMessages([{ content: memelandBot.initialMessage, role: 'chatbot' }]);
       }
     } catch (error) {
       console.error(error);
     }
   };
+  
+  // In the component body
+  console.log('messages:', messages); // Log the messages state
 
   const streamMessages = async (query) => {
     try {
