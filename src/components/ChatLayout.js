@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, InputAdornment, IconButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
+import Avatar from '@mui/material/Avatar';
+
+const userAvatar = "/ChatAvatar_potatoz.png";
+const rayAvatar = "/RayChanChatAvatar.png";
 
 const ChatLayout = () => {
   const [chatbotIds, setChatbotIds] = useState([]);
@@ -78,16 +82,17 @@ const ChatLayout = () => {
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 150px)', bgcolor: 'background.default', overflow: 'hidden'}}>
       <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }}>
-        {messages.map((message, index) => (
-          <Typography key={index} sx={{ 
-            backgroundColor: message.role === 'user' ? '#e0e0e0' : '#4caf50', 
-            color: message.role === 'user' ? '#000' : '#fff',
-            borderRadius: 1, 
-            m: 1, 
-            p: 1 
-          }}>
-            {message.content}
-          </Typography>
+              {messages.map((message, index) => (
+          <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
+            <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: 0, backgroundColor: message.role === 'user' ? '#282829' : 'transparent'  }} />
+            <Typography sx={{ 
+              backgroundColor: message.role === 'user' ? '#282829' : 'transparent', 
+            
+              p: 1 
+            }}>
+              {message.content}
+            </Typography>
+          </Box>
         ))}
       </Box>
       <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden' }}>
