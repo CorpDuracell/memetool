@@ -75,6 +75,9 @@ const ChatLayout = () => {
   };
 
   const handleSend = (content = message) => {
+    if (typeof content === 'object') {
+      content = message;
+    }
     streamMessages(content);
     setMessage('');
   };
