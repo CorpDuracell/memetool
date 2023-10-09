@@ -50,7 +50,7 @@ const theme = createTheme({
         MuiButton: {
             styleOverrides: {
               root: {
-                backgroundColor: '#1762BF',
+                backgroundColor: 'transparent',
                 backgroundImage: 'none',
                 color: 'white', // Ihre gewünschte Farbe
               },

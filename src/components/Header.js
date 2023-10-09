@@ -176,11 +176,12 @@ export default function ResponsiveAppBar() {
             sx={{
                 ".MuiPopover-paper": {
                     backgroundColor: '#1E1F1F',
+                    backgroundImage: 'none'
                 },
             }}
         >
             <div style={{ padding: "15px" }}>
-            <TextField
+            <TextField 
     label="Wallet Address"
     variant="outlined"
     fullWidth
@@ -228,7 +229,7 @@ export default function ResponsiveAppBar() {
                         </ListItem>
                     ))}
                 </List>
-                <Button onClick={handleSubmit} variant="contained" style={{ marginTop: '10px' }}>
+                <Button sx={{ backgroundColor: '#47A1FF' }} onClick={handleSubmit} variant="contained" style={{ marginTop: '10px' }}>
                     Submit
                 </Button>
             </div>
