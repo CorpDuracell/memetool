@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Box, Button, TextField, InputAdornment, IconButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
@@ -13,9 +13,17 @@ const ChatLayout = () => {
   const [messages, setMessages] = useState([]);
   const apiKey = process.env.NEXT_PUBLIC_CHAT_API_KEY;
 
+  const messagesEndRef = useRef(null);
+
+  const scrollToBottom = () => {
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
   useEffect(() => {
     fetchChatbots();
   }, []);
+
+  useEffect(scrollToBottom, [messages]);
 
 
   const fetchChatbots = async () => {
@@ -84,23 +92,28 @@ const ChatLayout = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 150px)', bgcolor: 'background.default', overflow: 'hidden'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column',  height: { xs: 'calc(100vh - 200px)', sm: 'calc(100vh - 150px)' }, bgcolor: 'background.default', overflow: 'hidden'}}>
       <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }}>
-              {messages.map((message, index) => (
-                <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
-  <Box sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', borderRadius: '0 16px 16px 16px', backgroundColor: message.role === 'user' ? '#282829' : 'transparent', alignItems: 'center' }}>
-    <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
-    <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
-    <TypeAnimation
-  sequence={[message.content]}
-  wrapper="span"
-  speed={50}
-  cursor={false}
-/>
-    </Typography>
+      {messages.map((message, index) => (
+  <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
+    <Box sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', borderRadius: '0 16px 16px 16px', backgroundColor: message.role === 'user' ? '#282829' : 'transparent', alignItems: 'center' }}>
+      <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
+      <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
+        {message.role === 'chatbot' ? (
+          <TypeAnimation
+            sequence={[message.content]}
+            wrapper="span"
+            speed={50}
+            cursor={false}
+          />
+        ) : (
+          message.content
+        )}
+      </Typography>
+    </Box>
   </Box>
-</Box>
-      ))}
+))}
+        <div ref={messagesEndRef} />
       </Box>
       <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden' }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 1, mb: 1, mt: 1, placeItems: 'center' }}>
