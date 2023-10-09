@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, InputAdornment, IconButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
+import { TypeAnimation } from 'react-type-animation';
 
 const userAvatar = "/ChatAvatar_potatoz.png";
 const rayAvatar = "/RayChanChatAvatar.png";
@@ -90,7 +91,12 @@ const ChatLayout = () => {
   <Box sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', borderRadius: '0 16px 16px 16px', backgroundColor: message.role === 'user' ? '#282829' : 'transparent', alignItems: 'center' }}>
     <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
     <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
-      {message.content}
+    <TypeAnimation
+  sequence={[message.content]}
+  wrapper="span"
+  speed={50}
+  cursor={false}
+/>
     </Typography>
   </Box>
 </Box>
