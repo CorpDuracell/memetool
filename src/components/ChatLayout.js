@@ -92,7 +92,7 @@ const ChatLayout = () => {
   };
 
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column',   height: { xs: 'calc(100vh - 200px)', sm: 'calc(100vh - 150px)' }, bgcolor: 'background.default', overflow: 'hidden'}}>
+    <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 150px)', bgcolor: 'background.default', overflow: 'hidden'}}>
       <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }}>
       {messages.map((message, index) => (
   <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
