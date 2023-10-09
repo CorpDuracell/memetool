@@ -29,7 +29,7 @@ const ChatLayout = () => {
   
       if (memelandBot) {
         setChatbotIds([memelandBot.id]);
-        setMessages([{ content: memelandBot.initialMessage, role: 'chatbot' }]);
+        setMessages([{ content: memelandBot.initial_messages[0], role: 'chatbot' }]);
       }
     } catch (error) {
       console.error(error);
@@ -70,8 +70,8 @@ const ChatLayout = () => {
     }
   };
 
-  const handleSend = () => {
-    streamMessages(message);
+  const handleSend = (content = message) => {
+    streamMessages(content);
     setMessage('');
   };
 
@@ -92,11 +92,11 @@ const ChatLayout = () => {
       </Box>
       <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden' }}>
         <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 1, mb: 1, mt: 1, placeItems: 'center' }}>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('Ask where Ray is at the moment')}>
-            Ask where Ray is at the moment
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('Where are you Ray?')}>
+          Where are you Ray?
           </Button>
-          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('What is the Max supply of $MEME Coin')}>
-            What is the Max supply of $MEME Coin
+          <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('What is the Max supply of $MEME Coin?')}>
+            What is the Max supply of $MEME Coin?
           </Button>
           <Button sx={{ width: '250px', height: '60px', backgroundColor: 'transparent', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('How much $MEME will be for the Community')}>
             How much $MEME will be for the Community
