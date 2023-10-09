@@ -106,21 +106,27 @@ const ChatLayout = () => {
           </Button>
         </Box>
         <Box sx={{ display: 'flex', gap: 1 }}>
-          <TextField
-            variant="outlined"
-            fullWidth
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <IconButton onClick={handleSend} sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
-                    <SendIcon sx={{ fontSize: 20, ml: 1 }} />
-                  </IconButton>
-                </InputAdornment>
-              ),
-            }}
-          />
+        <TextField
+          variant="outlined"
+          fullWidth
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
+              e.preventDefault(); // Prevents the addition of a new line in the TextField by default
+              handleSend();
+            }
+          }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton onClick={handleSend} sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
+                  <SendIcon sx={{ fontSize: 20, ml: 1 }} />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+        />
         </Box>
       </Box>
     </Box>
