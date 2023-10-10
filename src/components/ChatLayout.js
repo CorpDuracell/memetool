@@ -93,65 +93,67 @@ const ChatLayout = () => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 150px)', bgcolor: 'background.default', overflow: 'hidden'}}>
-      <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }}>
-      {messages.map((message, index) => (
-  <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
-    <Box sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', borderRadius: '0 16px 16px 16px', backgroundColor: message.role === 'user' ? '#282829' : 'transparent', alignItems: 'center' }}>
-      <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
-      <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
-        {message.role === 'chatbot' ? (
-          <TypeAnimation
-            sequence={[message.content]}
-            wrapper="span"
-            speed={50}
-            cursor={false}
-          />
-        ) : (
-          message.content
-        )}
-      </Typography>
-    </Box>
-  </Box>
-))}
-        <div ref={messagesEndRef} />
+    <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{ flexGrow: 1 }}>
+        {messages.map((message, index) => (
+          <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
+            <Box sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', borderRadius: '0 16px 16px 16px', backgroundColor: message.role === 'user' ? '#282829' : 'transparent', alignItems: 'center' }}>
+              <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
+              <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
+                {message.role === 'chatbot' ? (
+                  <TypeAnimation
+                    sequence={[message.content]}
+                    wrapper="span"
+                    speed={50}
+                    cursor={false}
+                  />
+                ) : (
+                  message.content
+                )}
+              </Typography>
+            </Box>
+          </Box>
+        ))}
+      <div ref={messagesEndRef} />
       </Box>
-      <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden' }}>
-        <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 1, mb: 1, mt: 1, placeItems: 'center' }}>
-          <Button sx={{ width: '250px', height: '60px', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('Where are you Ray?')}>
+      <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: 'repeat(2, 1fr)' }, gap: 1, mb: 1, mt: 1, placeItems: 'center' }}>
+        <Button sx={{ minWidth: 'fit-content', height: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('Where are you Ray?')}>
           Where are you Ray?
-          </Button>
-          <Button sx={{ width: '250px', height: '60px', borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('What is the Max supply of $MEME Coin?')}>
-            What is the Max supply of $MEME Coin?
-          </Button>
-          <Button sx={{ width: '250px', height: '60px', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('How much $MEME will be for the Community')}>
-            How much $MEME will be for the Community
-          </Button>
-          <Button sx={{ width: '250px', height: '60px', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928' }} variant="outlined" onClick={() => handleSend('How many NFT Collections does Memeland have')}>
-            How many NFT Collections does Memeland have
-          </Button>
-        </Box>
-        <Box sx={{ display: 'flex', gap: 1 }}>
+        </Button>
+        <Button sx={{ minWidth: 'fit-content', height: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('Tell me more about Memeland.')}>
+        Tell me more about Memeland.
+        </Button>
+        <Button sx={{ minWidth: 'fit-content', height: 'auto', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('The Max Supply of $MEME COIN?')}>
+          The Max Supply of $MEME COIN?
+        </Button>
+        <Button sx={{ minWidth: 'fit-content', height: 'auto', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('What is your take on NFTs and $MEME?')}>
+        What is your take on NFTs and $MEME?
+        </Button>
+      </Box>
+    </Box>
+    <Box sx={{ position: 'sticky', bottom: 0, overflow: 'hidden', mt: 2 }}>
+      <Box sx={{ display: 'flex', gap: 1 }}>
         <TextField
-          variant="outlined"
-          fullWidth
-          value={message}
-          onChange={(e) => setMessage(e.target.value)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') {
-              e.preventDefault(); // Prevents the addition of a new line in the TextField by default
-              handleSend();
-            }
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={handleSend} sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
-                  <SendIcon sx={{ fontSize: 20, ml: 1 }} />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
+            variant="outlined"
+            fullWidth
+            value={message}
+            onChange={(e) => setMessage(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault(); // Prevents the addition of a new line in the TextField by default
+                handleSend();
+              }
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <IconButton onClick={handleSend} sx={{ '&:hover': { backgroundColor: 'transparent' } }}>
+                    <SendIcon sx={{ fontSize: 20, ml: 1 }} />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+          />
         </Box>
       </Box>
     </Box>
