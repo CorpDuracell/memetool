@@ -112,7 +112,7 @@ useEffect(() => {
                     <TypeAnimation
                       sequence={[message.content]}
                       wrapper="span"
-                      speed={50}
+                      speed={100}
                       cursor={false}
                     />
                   ) : (
