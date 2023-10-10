@@ -6,19 +6,25 @@ import { GiPirateSkull } from 'react-icons/gi';
 import { GiPirateCoat } from 'react-icons/gi';
 import { GiBarrel } from 'react-icons/gi';
 
-import { Box, Drawer, List, ListItem, ListItemIcon, ListItemButton, ListItemText, Typography } from '@mui/material';
+import { Box, Drawer, List, ListItem, ListItemIcon, ListItemButton, ListItemText, Typography, Divider } from '@mui/material';
 import { useDrawer } from '../contexts/DrawerContext';
 
 const logo = "/Black_and_White_Skull_memetool_Animated_Logo.gif";
+
+const pages = ['About', 'Pricing', 'Blog']; // Add this line
 
 export default function Sidebar() {
   const { toggleDrawer, open, setActiveMenu, activeMenu } = useDrawer();
   const matches = useMediaQuery('(max-width:770px)'); // returns true if screen width is 600px or less
 
   const handleMenuItemClick = (text) => {
-    setActiveMenu(text);
-    if (matches) { // if device is mobile, close the drawer
-      toggleDrawer();
+    if (text === 'Blog') {
+      window.open('https://cryptosyou.com/', '_blank');
+    } else {
+      setActiveMenu(text);
+      if (matches) { // if device is mobile, close the drawer
+        toggleDrawer();
+      }
     }
   };
 
@@ -61,6 +67,28 @@ export default function Sidebar() {
             </ListItem>
           );
         })}
+        <Divider sx={{ my: 2 }} /> {/* Add this line */}
+        {pages.map((text) => ( // Add this block
+          <ListItem key={text} disablePadding>
+            <ListItemButton   
+              onClick={() => handleMenuItemClick(text)}
+              className={activeMenu === text ? 'activeMenu' : ''} 
+              sx={{ 
+                backgroundColor: activeMenu === text ? '#282829' : 'transparent',
+                color: "#666666",
+                "&:hover": {
+                  backgroundColor: "#282829",
+                  color: "#E2E3E3",
+                  "& .addIcon": {
+                    color: "#E2E3E3"
+                  }
+                }
+              }}
+            >
+              <ListItemText sx={{ color: activeMenu === text ? '#E2E3E3' : 'inherit' }} primary={text}/>
+            </ListItemButton>
+          </ListItem>
+        ))}
       </List>
     </Drawer>
   );

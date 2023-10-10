@@ -1,5 +1,4 @@
 //Header.js
-
 import styles from '../styles/Header.module.css';
 
 import * as React from 'react';
@@ -8,12 +7,8 @@ import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
 import MenuOpenIcon from '@mui/icons-material/MenuOpen';
 import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
-import Hidden from '@mui/material/Hidden';
-import MenuIcon from '@mui/icons-material/Menu';
 import Popover from '@mui/material/Popover';
 import TextField from '@mui/material/TextField';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -26,31 +21,18 @@ import { useWallet } from '../contexts/WalletContext';
 import { useDisconnect } from 'wagmi';
 import ConnectButton from './ConnectButton';
 
-
-const pages = ['About', 'Pricing', 'Blog'];
+const famousWallets = [
+    { label: "memeland.eth", address: "memeland.eth" },
+    { label: "degensfund.eth", address: "degensfund.eth" },
+];
 
 export default function ResponsiveAppBar() {
-    const { toggleDrawer, open, setActiveMenu } = useDrawer();
-    const [anchorElNav, setAnchorElNav] = React.useState(null);
+    const { toggleDrawer, open } = useDrawer();
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [walletAddress, setWalletAddress] = React.useState('0x1c593c...');
 
     const { walletAddress: walletAddressContext, setWalletAddress: setWalletAddressContext } = useWallet();
-    const [localWalletAddress, setLocalWalletAddress] = useState(walletAddressContext); // Use the state from the context
     const { disconnect } = useDisconnect(); // Use the disconnect function from useDisconnect
-
-    const famousWallets = [
-        { label: "memeland.eth", address: "memeland.eth" },
-        { label: "degensfund.eth", address: "degensfund.eth" },
-    ];
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
-
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
 
     const handleOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -97,58 +79,6 @@ export default function ResponsiveAppBar() {
                     <MenuOpenIcon />
                 </IconButton>
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
-                    <Hidden mdUp>
-                    <IconButton color="inherit" onClick={handleOpenNavMenu}>
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              anchorEl={anchorElNav}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-            >
-            {pages.map((page) => (
-              page === "Blog" ? (
-                <a key={page} href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <MenuItem onClick={handleCloseNavMenu}>
-                    {page}
-                  </MenuItem>
-                </a>
-              ) : (
-                <MenuItem key={page} onClick={() => {
-                  handleCloseNavMenu();
-                  setActiveMenu(page);
-                }}>
-                  {page}
-                </MenuItem>
-                  )
-            ))}
-            </Menu>
-                    </Hidden>
-                    <Hidden mdDown>
-            {pages.map((page) => (
-              page === "Blog" ? (
-                <a key={page} href="https://cryptosyou.com/" target="_blank" rel="noopener noreferrer" style={{ textDecoration: 'none' }}>
-                  <Button
-                    onClick={handleCloseNavMenu}
-                    sx={{ my: 2, backgroundColor: '#1E1F1F', color: 'white', display: 'block' }}
-                  >
-                    {page}
-                  </Button>
-                </a>
-              ) : (
-                <Button
-                  key={page}
-                  onClick={() => {
-                    handleCloseNavMenu();
-                    setActiveMenu(page);
-                  }}
-                  sx={{ my: 2, backgroundColor: '#1E1F1F', color: 'white', display: 'block' }}
-                >
-                  {page}
-                </Button>
-              )
-            ))}
-                    </Hidden>
                     <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
                         <Button onClick={handleOpen} variant="outlined" sx={{ marginRight: 1 }}>Explore Wallet</Button>
                         <ConnectButton />
