@@ -19,12 +19,23 @@ const ChatLayout = () => {
     chatOutput.scrollTop = chatOutput.scrollHeight;
   };
 
+  useEffect(scrollToBottom, [messages]);
+
+  useEffect(() => {
+    const chatOutput = document.getElementById('chatOutput');
+    const observer = new MutationObserver(scrollToBottom);
+  
+    observer.observe(chatOutput, {
+      childList: true,
+      subtree: true,
+    });
+  
+    return () => observer.disconnect();
+  }, []);
+
   useEffect(() => {
     fetchChatbots();
   }, []);
-
-  useEffect(scrollToBottom, [messages]);
-
 
   const fetchChatbots = async () => {
     try {
