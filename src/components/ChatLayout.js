@@ -144,17 +144,17 @@ useEffect(() => {
           ))}
         </Box>
         <Box sx={{ 
-  display: 'grid',
-  gridTemplateColumns: { sm: 'repeat(2, 1fr)' }, 
-  gap: 1, 
-  mb: 1, 
-  mt: 1, 
-  placeItems: 'center',
-  transition: 'opacity 2s ease-in-out, max-height 2s ease-in-out',
-  opacity: messageCount < 4 ? 1 : 0,
-  maxHeight: messageCount < 4 ? '1000px' : 0,
-  overflow: 'hidden'
-}}>
+            display: 'grid',
+            gridTemplateColumns: { sm: 'repeat(2, 1fr)' }, 
+            gap: 1, 
+            mb: 1, 
+            mt: 1, 
+            placeItems: 'center',
+            transition: 'opacity 2s ease-in-out, max-height 2s ease-in-out',
+            opacity: messageCount < 4 ? 1 : 0,
+            maxHeight: messageCount < 4 ? '1000px' : 0,
+            overflow: 'hidden'
+          }}>
           <Button sx={{ minWidth: 'fit-content', height: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('Where are you Ray?')}>
             Where are you Ray?
           </Button>

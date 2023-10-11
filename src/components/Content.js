@@ -179,7 +179,7 @@ if (activeMenu === "Collection") {
 
 if (activeMenu === "Pirate Chat") {
   content = (
-    <Box className={styles.content}> 
+    <Box> 
       <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Pirate Chat</Typography>
       <ChatLayout />   
     </Box> 
