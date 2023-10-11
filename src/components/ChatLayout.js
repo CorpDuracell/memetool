@@ -15,6 +15,7 @@ const ChatLayout = () => {
   const apiKey = process.env.NEXT_PUBLIC_CHAT_API_KEY;
 
   const messagesEndRef = useRef(null);
+  const [isFirstRender, setIsFirstRender] = useState(true);
 
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -23,6 +24,14 @@ const ChatLayout = () => {
   useEffect(() => {
     fetchChatbots();
   }, []);
+
+  useEffect(() => {
+    if (!isFirstRender) {
+      scrollToBottom();
+    } else {
+      setIsFirstRender(false);
+    }
+  }, [messages]);
 
   useEffect(scrollToBottom, [messages]);
 
@@ -158,7 +167,7 @@ useEffect(() => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2 }}>
+      <Box sx={{ position: 'fixed', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2}}>
         <TextField
           variant="outlined"
           fullWidth
