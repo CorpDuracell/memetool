@@ -4,6 +4,8 @@ import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
 import { TypeAnimation } from 'react-type-animation';
 
+import styles from '../styles/ChatLayout.module.css';
+
 const userAvatar = "/ChatAvatar_potatoz.png";
 const rayAvatar = "/RayChanChatAvatar.png";
 
@@ -101,7 +103,7 @@ useEffect(() => {
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 125px)', bgcolor: 'background.default', overflow: 'hidden'}}>
-      <Box sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
+      <Box sx={{  flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
             <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
