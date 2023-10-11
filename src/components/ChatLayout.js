@@ -14,9 +14,6 @@ const ChatLayout = () => {
   const [messages, setMessages] = useState([]);
   const apiKey = process.env.NEXT_PUBLIC_CHAT_API_KEY;
 
-  const messagesEndRef = useRef(null);
-  const [isFirstRender, setIsFirstRender] = useState(true);
-
   const scrollToBottom = () => {
     const chatContainer = document.getElementById('chatContainer');
     chatContainer.scrollTop = chatContainer.scrollHeight;
@@ -25,14 +22,6 @@ const ChatLayout = () => {
   useEffect(() => {
     fetchChatbots();
   }, []);
-
-  useEffect(() => {
-    if (!isFirstRender) {
-      scrollToBottom();
-    } else {
-      setIsFirstRender(false);
-    }
-  }, [messages]);
 
   useEffect(scrollToBottom, [messages]);
 
@@ -111,13 +100,19 @@ useEffect(() => {
 }, [messages]);
 
   return (
-    <Box id="chatContainer" sx={{ position: 'relative', height: '100vh', overflow: 'auto'}}>
-      <Box sx={{  flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
+    <Box id="chatContainer" sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 125px)', overflow: 'hidden'}}>
+      <Box id="chatOutput" sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
             <Box key={index} sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', m: 1 }}>
               <Box sx={{ display: 'flex', flexDirection: message.role === 'user' ? 'row-reverse' : 'row', borderRadius: '0 16px 16px 16px', backgroundColor: message.role === 'user' ? '#282829' : 'transparent', alignItems: 'flex-start'  }}>
                 <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
+                <IconButton
+                        onClick={() => navigator.clipboard.writeText(message.content)}
+                        sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+                      >
+                        <ContentCopyIcon sx={{ fontSize: 20, ml: 1 }} />
+                      </IconButton>
                 <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
                   {message.role === 'chatbot' ? (
                     <>
@@ -127,12 +122,6 @@ useEffect(() => {
                         speed={100}
                         cursor={false}
                       />
-                      <IconButton
-                        onClick={() => navigator.clipboard.writeText(message.content)}
-                        sx={{ '&:hover': { backgroundColor: 'transparent' } }}
-                      >
-                        <ContentCopyIcon sx={{ fontSize: 20, ml: 1 }} />
-                      </IconButton>
                     </>
                   ) : (
                     message.content
@@ -141,7 +130,6 @@ useEffect(() => {
               </Box>
             </Box>
           ))}
-          <div ref={messagesEndRef} />
         </Box>
         <Box sx={{ 
           display: 'grid',
@@ -168,7 +156,7 @@ useEffect(() => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2 }}>
+      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2, mb: 2 }}>
         <TextField
           variant="outlined"
           fullWidth
