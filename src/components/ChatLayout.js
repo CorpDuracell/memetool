@@ -100,7 +100,7 @@ useEffect(() => {
 }, [messages]);
 
   return (
-    <Box id="chatContainer" sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 125px)', overflow: 'hidden'}}>
+    <Box id="chatContainer" sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 125px)', overflow: 'hidden', paddingBottom: '60px'}}>
       <Box id="chatOutput" sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
