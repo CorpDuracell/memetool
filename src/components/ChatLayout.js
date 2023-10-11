@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, InputAdornment, IconButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
