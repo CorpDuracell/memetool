@@ -99,8 +99,20 @@ useEffect(() => {
   setMessageCount(messages.length);
 }, [messages]);
 
+useEffect(() => {
+  const setVh = () => {
+    let vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  };
+
+  window.addEventListener('resize', setVh);
+  setVh();
+
+  return () => window.removeEventListener('resize', setVh);
+}, []);
+
   return (
-    <Box id="chatContainer" sx={{ display: 'flex', flexDirection: 'column', height: 'calc(100vh - 125px)', overflow: 'hidden', paddingBottom: '60px'}}>
+    <Box id="chatContainer" sx={{ display: 'flex', flexDirection: 'column', height: 'calc(var(--vh, 1vh) * 100 - 125px)', overflow: 'hidden'}}>
       <Box id="chatOutput" sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
