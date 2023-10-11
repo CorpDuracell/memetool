@@ -11,8 +11,6 @@ import { useDrawer } from '../contexts/DrawerContext';
 
 import ETHPriceDisplay from './ETHPriceDisplay';
 import OwnedNFTs from './OwnedNFTs';
-
-import Chatbot from './Chatbase';
 import ChatLayout from './ChatLayout';
 
 export default function Content() {
@@ -181,12 +179,10 @@ if (activeMenu === "Collection") {
 
 if (activeMenu === "Pirate Chat") {
   content = (
-    <>
+    <Box className={styles.content}> 
       <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Pirate Chat</Typography>
-      <div>  
       <ChatLayout />   
-      </div>
-    </> 
+    </Box> 
   );
 }
 
