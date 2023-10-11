@@ -15,8 +15,8 @@ const ChatLayout = () => {
   const apiKey = process.env.NEXT_PUBLIC_CHAT_API_KEY;
 
   const scrollToBottom = () => {
-    const chatContainer = document.getElementById('chatContainer');
-    chatContainer.scrollTop = chatContainer.scrollHeight;
+    const chatOutput = document.getElementById('chatOutput');
+    chatOutput.scrollTop = chatOutput.scrollHeight;
   };
 
   useEffect(() => {
