@@ -8,6 +8,18 @@
         padding-top: 10px; /* Adds 20px of space at the top of the content */
         padding-left: 30px; /* Adds 20px of space at the left of the content */
         padding-right: 30px;
-
+        height: calc(100vh - 75px);
 }
 
+/* When the viewport width is 600px or less, subtract 67px instead */
+@media (max-width: 600px) {
+    .contentArea {
+        height: calc(100vh - 67px);
+    }
+}
+
+@media (max-height: 500px) {
+    .contentArea {
+        height: calc(100vh - 60px);
+    }
+}
