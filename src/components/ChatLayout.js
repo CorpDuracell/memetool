@@ -18,7 +18,8 @@ const ChatLayout = () => {
   const [isFirstRender, setIsFirstRender] = useState(true);
 
   const scrollToBottom = () => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const chatContainer = document.getElementById('chatContainer');
+    chatContainer.scrollTop = chatContainer.scrollHeight;
   };
 
   useEffect(() => {
@@ -110,7 +111,7 @@ useEffect(() => {
 }, [messages]);
 
   return (
-    <Box sx={{ position: 'relative', height: '100vh', overflow: 'auto'}}>
+    <Box id="chatContainer" sx={{ position: 'relative', height: '100vh', overflow: 'auto'}}>
       <Box sx={{  flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
