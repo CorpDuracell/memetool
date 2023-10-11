@@ -3,8 +3,7 @@ import { Box, Button, TextField, InputAdornment, IconButton, Typography } from '
 import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
 import { TypeAnimation } from 'react-type-animation';
-
-import styles from '../styles/ChatLayout.module.css';
+import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const userAvatar = "/ChatAvatar_potatoz.png";
 const rayAvatar = "/RayChanChatAvatar.png";
@@ -111,12 +110,20 @@ useEffect(() => {
                 <Avatar src={message.role === 'user' ? userAvatar : rayAvatar} sx={{ width: 48, height: 48, borderRadius: message.role === 'user' ? '0 16px 16px 0' : '16px 0 0 16px' }} />
                 <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
                   {message.role === 'chatbot' ? (
-                    <TypeAnimation
-                      sequence={[message.content]}
-                      wrapper="span"
-                      speed={100}
-                      cursor={false}
-                    />
+                    <>
+                      <TypeAnimation
+                        sequence={[message.content]}
+                        wrapper="span"
+                        speed={100}
+                        cursor={false}
+                      />
+                      <IconButton
+                        onClick={() => navigator.clipboard.writeText(message.content)}
+                        sx={{ '&:hover': { backgroundColor: 'transparent' } }}
+                      >
+                        <ContentCopyIcon sx={{ fontSize: 20, ml: 1 }} />
+                      </IconButton>
+                    </>
                   ) : (
                     message.content
                   )}
