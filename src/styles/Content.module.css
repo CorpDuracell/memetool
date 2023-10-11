@@ -10,3 +10,16 @@
         padding-right: 30px;
         height: calc(100vh - 75px);
 }
+
+/* When the viewport width is 600px or less, subtract 67px instead */
+@media (max-width: 600px) {
+    .contentArea {
+        height: calc(100vh - 67px);
+    }
+}
+
+@media (max-height: 500px) {
+    .contentArea {
+        height: calc(100vh - 60px);
+    }
+}

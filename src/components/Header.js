@@ -2,7 +2,6 @@
 import styles from '../styles/Header.module.css';
 
 import * as React from 'react';
-import { useState} from 'react';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
