@@ -1,7 +1,6 @@
 // /src/components/Content.js
 import styles from '../styles/Content.module.css';
 import React from 'react';
-import { useEffect } from 'react';
 import { Grid, Card, Typography, Box, } from '@mui/material';
 
 
@@ -21,7 +20,7 @@ const { open, activeMenu} = useDrawer();
 
 if (activeMenu === "Dashboard") {
   content = (
-    <Box className={styles.content}> 
+    <Box className={styles.dashboard}> 
     <Typography variant="h5" sx={{ mb: 2, mt: 1 }}>Dashboard</Typography>
 
   <Grid container spacing={3} >

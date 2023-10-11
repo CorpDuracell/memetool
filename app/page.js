@@ -1,8 +1,5 @@
 'use client'
 // app/app/page.js
-import '../src/styles/_app.css';
-import '../src/styles/App.css';
-
 import React from 'react';
 import Dashboard from '../src/components/Dashboard';
 import { ThemeProvider } from '@mui/material/styles';
