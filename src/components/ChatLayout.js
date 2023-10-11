@@ -110,7 +110,7 @@ useEffect(() => {
 }, [messages]);
 
   return (
-    <Box sx={{bgcolor: 'background.default', overflow: 'hidden'}}>
+    <Box sx={{ position: 'relative', height: '100vh', overflow: 'auto'}}>
       <Box sx={{  flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
@@ -167,7 +167,7 @@ useEffect(() => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ position: 'fixed', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2}}>
+      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2 }}>
         <TextField
           variant="outlined"
           fullWidth
