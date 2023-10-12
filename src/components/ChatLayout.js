@@ -123,7 +123,18 @@ useEffect(() => {
 }, []);
 
   return (
-    <Box id="chatContainer" sx={{ display: 'flex', flexDirection: 'column', height: 'calc(var(--vh, 1vh) * 100 - 125px)', overflow: 'hidden'}}>
+    <Box id="chatContainer" sx={{ 
+      display: 'flex', 
+      flexDirection: 'column', 
+      overflow: 'hidden',
+      height: 'calc(100svh - 123px)', 
+      '@media (max-height:500px)': {
+        height: 'calc(100svh - 108px)',
+      },
+      '@media (max-width:600px)': {
+        height: 'calc(100svh - 115px)',
+      },
+    }}>
       <Box id="chatOutput" sx={{ flexGrow: 1, overflow: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1, display: 'flex', flexDirection: 'column' }}>
         <Box sx={{ flexGrow: 1 }}>
           {messages.map((message, index) => (
@@ -180,7 +191,7 @@ useEffect(() => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2, mb: 2 }}>
+      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2, mb: 1 }}>
         <TextField
           variant="outlined"
           fullWidth
