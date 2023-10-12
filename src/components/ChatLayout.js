@@ -100,10 +100,6 @@ const ChatLayout = () => {
     }
     streamMessages(content);
     setMessage('');
-
-  // Scroll the page a little bit for Safari Mobile Browser to resize correctly
-      window.scrollBy(0, 1);
-      setTimeout(() => window.scrollBy(0, -1), 10);
   };
 
   // Keep track of the number of messages
@@ -196,7 +192,7 @@ useEffect(() => {
             }
           }}
           onBlur={() => {
-            // Scroll the page a little bit when TextField loses focus
+            // Scroll the page a little bit for Safari Mobile Browser to resize correctly
             window.scrollBy(0, 1);
             setTimeout(() => window.scrollBy(0, -1), 10);
           }}
