@@ -100,6 +100,12 @@ const ChatLayout = () => {
     }
     streamMessages(content);
     setMessage('');
+
+      // Force a reflow of the chat container
+  const chatContainer = document.getElementById('chatContainer');
+  chatContainer.style.display = 'none';
+  chatContainer.offsetHeight; // no need to store this anywhere, the reference is enough
+  chatContainer.style.display = '';
   };
 
   // Keep track of the number of messages
@@ -109,18 +115,6 @@ const [messageCount, setMessageCount] = useState(0);
 useEffect(() => {
   setMessageCount(messages.length);
 }, [messages]);
-
-useEffect(() => {
-  const setVh = () => {
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-  };
-
-  window.addEventListener('resize', setVh);
-  setVh();
-
-  return () => window.removeEventListener('resize', setVh);
-}, []);
 
   return (
     <Box id="chatContainer" sx={{ 
