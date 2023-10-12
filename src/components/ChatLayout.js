@@ -195,6 +195,11 @@ useEffect(() => {
               handleSend();
             }
           }}
+          onBlur={() => {
+            // Scroll the page a little bit when TextField loses focus
+            window.scrollBy(0, 1);
+            setTimeout(() => window.scrollBy(0, -1), 10);
+          }}
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
