@@ -101,11 +101,9 @@ const ChatLayout = () => {
     streamMessages(content);
     setMessage('');
 
-      // Force a reflow of the chat container
-  const chatContainer = document.getElementById('chatContainer');
-  chatContainer.style.display = 'none';
-  chatContainer.offsetHeight; // no need to store this anywhere, the reference is enough
-  chatContainer.style.display = '';
+  // Scroll the page a little bit for Safari Mobile Browser to resize correctly
+      window.scrollBy(0, 1);
+      setTimeout(() => window.scrollBy(0, -1), 10);
   };
 
   // Keep track of the number of messages
@@ -185,7 +183,7 @@ useEffect(() => {
           </Button>
         </Box>
       </Box>
-      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 2, mb: 1 }}>
+      <Box sx={{ position: 'sticky', bottom: 0, minHeight: 60, overflow: 'hidden', mt: 1, mb: 1 }}>
         <TextField
           variant="outlined"
           fullWidth
