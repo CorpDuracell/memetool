@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Box, Button, TextField, InputAdornment, IconButton, Typography } from '@mui/material';
 import SendIcon from '@mui/icons-material/Send';
 import Avatar from '@mui/material/Avatar';
-import { TypeAnimation } from 'react-type-animation';
+import Typed from 'typed.js';
 import ContentCopyIcon from '@mui/icons-material/ContentCopy';
 
 const userAvatar = "/ChatAvatar_potatoz.png";
@@ -65,8 +65,20 @@ const ChatLayout = () => {
 
   const streamMessages = async (query) => {
     try {
+      // This function helps in converting special characters to HTML entities
+      const escapeHtml = (unsafe) => {
+        return unsafe
+          .replace(/&/g, "&amp;")
+          .replace(/</g, "&lt;")
+          .replace(/>/g, "&gt;")
+          .replace(/"/g, "&quot;")
+          .replace(/'/g, "&#039;");
+      };
+  
+      // Adding the user's message to the messages array
       setMessages(prevMessages => [...prevMessages, { content: query, role: 'user' }]);
   
+      // Sending a request to the chatbot API
       const response = await fetch('https://www.chatbase.co/api/v1/chat', {
         method: 'POST',
         headers: {
@@ -82,17 +94,23 @@ const ChatLayout = () => {
         })
       });
   
+      // Handling errors from the API
       if (!response.ok) {
         const errorData = await response.json();
         throw Error(errorData.message);
       }
   
+      // Extracting data from the API response
       const data = await response.json();
-      setMessages(prevMessages => [...prevMessages, { content: data.text, role: 'chatbot' }]);
+  
+      // Escaping HTML from the chatbot's response before adding it to the messages array
+      const safeContent = escapeHtml(data.text);
+      setMessages(prevMessages => [...prevMessages, { content: safeContent, role: 'chatbot' }]);
     } catch (error) {
       console.error('Error:', error);
     }
   };
+  
 
   const handleSend = (content = message) => {
     if (typeof content === 'object') {
@@ -108,6 +126,25 @@ const [messageCount, setMessageCount] = useState(0);
 // Update the message count whenever a new message is sent
 useEffect(() => {
   setMessageCount(messages.length);
+}, [messages]);
+
+// initialize Typed.js when a new message is added to the messages state
+
+useEffect(() => {
+  if (messages.length > 0) {
+    const lastMessage = messages[messages.length - 1];
+    if (lastMessage.role === 'chatbot') {
+      let formattedContent = lastMessage.content.replace(/\n/g, '<br>');
+      formattedContent = formattedContent.replace(/H1:/g, '<h1>').replace(/H2:/g, '<h2>').replace(/H3:/g, '<h3>');
+      const options = {
+        strings: [formattedContent],
+        typeSpeed: 0,
+        contentType: 'html',
+        showCursor: false,
+      };
+      new Typed(`#chatbot-message-${messages.length - 1}`, options);
+    }
+  }
 }, [messages]);
 
   return (
@@ -135,20 +172,13 @@ useEffect(() => {
                       >
                         <ContentCopyIcon sx={{ fontSize: 20, ml: 1 }} />
                       </IconButton>
-                <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
-                  {message.role === 'chatbot' ? (
-                    <>
-                      <TypeAnimation
-                        sequence={[message.content]}
-                        wrapper="span"
-                        speed={100}
-                        cursor={false}
-                      />
-                    </>
-                  ) : (
-                    message.content
-                  )}
-                </Typography>
+                      <Typography sx={{ p: 1, textAlign: message.role === 'user' ? 'right' : 'left' }}>
+                      {message.role === 'chatbot' ? (
+                        <div id={`chatbot-message-${index}`}></div>
+                      ) : (
+                        message.content
+                      )}
+                      </Typography>
               </Box>
             </Box>
           ))}
