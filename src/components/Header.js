@@ -79,8 +79,8 @@ export default function ResponsiveAppBar() {
                 </IconButton>
                 <Box sx={{ display: 'flex', justifyContent: 'flex-end' }}>
                     <Box sx={{ ml: 2, display: 'flex', alignItems: 'center' }}>
-                        <Button onClick={handleOpen} variant="outlined" sx={{ marginRight: 1 }}>Explore Wallet</Button>
-                        <ConnectButton />
+                        <Button onClick={handleOpen} variant="outlined" sx={{ marginRight: 1 }} disabled>Explore Wallet</Button>
+                        {/* <ConnectButton/> */}
                     </Box>
                     <Popover
             open={Boolean(anchorEl)}

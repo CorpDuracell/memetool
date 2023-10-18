@@ -49,6 +49,7 @@ export default function Sidebar() {
               <ListItemButton   
                 onClick={() => handleMenuItemClick(text)}
                 className={activeMenu === text ? 'activeMenu' : ''} 
+                disabled={text === 'Dashboard' || text === 'Collection'}
                 sx={{ 
                   backgroundColor: activeMenu === text ? '#282829' : 'transparent',
                   color: "#666666",
@@ -73,6 +74,7 @@ export default function Sidebar() {
             <ListItemButton   
               onClick={() => handleMenuItemClick(text)}
               className={activeMenu === text ? 'activeMenu' : ''} 
+              disabled={text === 'About' || text === 'Pricing'}
               sx={{ 
                 backgroundColor: activeMenu === text ? '#282829' : 'transparent',
                 color: "#666666",

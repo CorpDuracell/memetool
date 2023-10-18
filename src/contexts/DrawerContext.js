@@ -9,7 +9,7 @@ export const useDrawer = () => {
 export const DrawerProvider = ({ children }) => {
     // Initialize state with undefined so it doesn't try to access window on the server
     const [open, setOpen] = useState(undefined);
-    const [activeMenu, setActiveMenu] = useState("Dashboard"); // Default to "Dashboard"
+    const [activeMenu, setActiveMenu] = useState("Pirate Chat"); // Default to "Dashboard"
 
     useEffect(() => {
         // Now that we're on the client, we can safely access window
