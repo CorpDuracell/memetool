@@ -38,7 +38,9 @@ export default function Sidebar() {
           padding: '8px'
         }}
       >
-        <img src={logo} alt="Your Logo" style={{ width: '80%', height: 'auto' }} />
+        <a href="https://app.memetool.ai" target="_self" rel="noopener noreferrer">
+          <img src={logo} alt="Your Logo" style={{ width: '80%', height: 'auto' }} />
+        </a>
       </Box>
       <Typography variant="h6" sx={{ mt: 2, mb: 2, ml: 2, color: '#666666' }}>Navigation</Typography>
       <List>

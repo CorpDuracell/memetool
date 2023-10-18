@@ -199,7 +199,7 @@ useEffect(() => {
             Where are you Ray?
           </Button>
           <Button sx={{ minWidth: 'fit-content', height: 'auto', borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('Tell me more about Memeland.')}>
-            Tell me more about Memeland.
+            How many 
           </Button>
           <Button sx={{ minWidth: 'fit-content', height: 'auto', display: { xs: 'none', sm: 'block' }, borderRadius: 1, border: '1px solid #282928', p: 1 }} variant="outlined" onClick={() => handleSend('The Max Supply of $MEME COIN?')}>
             The Max Supply of $MEME COIN?
