@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@auth0/nextjs-auth0": "^3.2.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.3",
@@ -22,6 +23,7 @@
     "react-chartjs-2": "^5.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.10.1",
+    "touch-cli": "^0.0.1",
     "typed.js": "^2.0.16",
     "viem": "^1.12.2",
     "wagmi": "^1.4.2",
