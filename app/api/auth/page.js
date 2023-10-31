@@ -2,7 +2,7 @@
 const Test = () => {
 
     return (
-      <div className={styles.adminPage}>
+      <div>
           <h1>Welcome to the Admin Page</h1>
           <a href="/api/auth/logout">Logout</a>
       </div>
