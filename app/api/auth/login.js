@@ -1,10 +1,16 @@
-import { handleLogin } from '@auth0/nextjs-auth0';
+// api/auth/login.js
+import { handleLogin } from "@auth0/nextjs-auth0";
 
-export default async function login(req, res) {
-    try {
-      await handleLogin(req, res);
-    } catch (error) {
-      console.error(error);
-      res.status(error.status || 500).end(error.message);
-    }
+const loginHandler = async (req, res) => {
+  try {
+    await handleLogin(req, res, {
+      authorizationParams: {
+        screen_hint: "login",
+      },
+    });
+  } catch (error) {
+    res.status(error.status || 400).end(error.message);
   }
+};
+
+export default loginHandler;
