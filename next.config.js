@@ -1,4 +1,10 @@
 module.exports = {
-  // Your settingds here
-
+  async rewrites() {
+    return [
+      {
+        source: '/api/auth',
+        destination: '/api/auth/page',
+      },
+    ];
+  },
 };
