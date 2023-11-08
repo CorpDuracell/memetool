@@ -1,15 +1,18 @@
 // app/admin/page.js
 import styles from './Admin.module.css';
-import { withPageAuthRequired } from '@auth0/nextjs-auth0';
+import { redirect } from "next/navigation";
+import {getKindeServerSession, LogoutLink} from "@kinde-oss/kinde-auth-nextjs/server";
 
-const AdminPage = () => {
+export default async function Admin() {
+  const { isAuthenticated } = getKindeServerSession();
 
-  return (
+  return (await isAuthenticated()) ? (
     <div className={styles.adminPage}>
-        <h1>Welcome to the Admin Page</h1>
-        <a href="/api/auth/logout">Logout</a>
+      <h1>Welcome to the Admin Page</h1>
+      This page is protected - but you can view it because you are authenticated
+      <LogoutLink>Log out</LogoutLink>
     </div>
+  ) : (
+    redirect('/api/auth/login')
   );
-};
-
-export default withPageAuthRequired(AdminPage);
+}
