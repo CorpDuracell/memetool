@@ -9,7 +9,6 @@ export default async function Admin() {
   return (await isAuthenticated()) ? (
     <div className={styles.adminPage}>
       <h1>Welcome to the Admin Page</h1>
-      This page is protected - but you can view it because you are authenticated
       <LogoutLink>Log out</LogoutLink>
     </div>
   ) : (
