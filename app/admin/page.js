@@ -12,6 +12,9 @@ export default async function Admin() {
       <LogoutLink>Log out</LogoutLink>
     </div>
   ) : (
-    redirect('/api/auth/login')
+    <div className={styles.adminPage}>
+    <h1>Here not!!</h1>
+    </div>
+    // redirect('/api/auth/login')
   );
 }
