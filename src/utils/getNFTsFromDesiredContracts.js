@@ -1,5 +1,5 @@
 import { Network, Alchemy } from "alchemy-sdk";
-import { NFT_CONTRACTS } from "../config/nftContracts";
+import { NFT_CONTRACTS } from "../../config/nftContracts";
 
 export default async (req, res) => {
     const { owner } = req.query;

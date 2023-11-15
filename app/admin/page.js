@@ -13,7 +13,7 @@ export default async function Admin() {
     </div>
   ) : (
     <div className={styles.adminPage}>
-    <h1>Here not!!</h1>
+    <h1>You are not allowed to access!!</h1>
     </div>
     // redirect('/api/auth/login')
   );
